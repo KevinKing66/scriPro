@@ -1,1 +1,97 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+    --main-color-nigth-mode: #121212;
+    --main-color: #ffffff;
+    --second-color-nigth-mode: #181819c5;
+    --third-color-nigth-mode: #02376ce3;
+    --fourth-color-nigth-mode:#737373c4;
+    --font-color-nigth-mode: #fff;
+    --font-color: #00478D;
+}
+*{
+    font-family: Arial, sans-serif;
+}
+.transition{
+    transition: all 0.3s ease-in-out;
+}
+html{
+    height: 99%;
+    width: 100%;
+}
+body, app-root, html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: var(--main-color);
+    color: var(--font-color);
+}
+body, app-root{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    /* height: 100%; */
+    background-color: var(--main-color);
+    color: var(--font-color-nigth-mode)
+}
+body.nigth-mode, app-root.nigth-mode{
+    background-color: var(--main-color-nigth-mode);
+    color: var(--font-color-nigth-mode);
+}
+svg{
+  fill: currentColor;
+  color: var(--font-color);
+}
+a{
+    color: var(--font-color-nigth-mode);
+    text-decoration: none;
+}
+a.a-type-2{
+    color:#8f99f8;
+}
+
+.full-width{
+    width: 100%;
+}
+.center-content{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+}
+
+.logo{
+    max-height: 100px;
+    max-width: 80%;
+}
+
+
+.input-btn{
+    background-color: var(--third-color-nigth-mode);
+    color: var(--font-color-nigth-mode);
+    padding: .5rem;
+}
+
+input, select{
+    padding: 0.6rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    padding: 5px 0px;
+}
+
+/* Content */
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 100%;
+}

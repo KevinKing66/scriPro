@@ -1,0 +1,60 @@
+svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
+    color: var(--main-color)
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 150px;
+    overflow: hidden;
+}
+
+.menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.menu a:hover {
+    background: #f0f0f0;
+}
+
+#menu-toggle:checked + .menu {
+    display: block;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}

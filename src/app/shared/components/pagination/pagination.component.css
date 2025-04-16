@@ -1,0 +1,31 @@
+.pagination-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+.pagination{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 1.2rem;
+    color: var(--font-color);
+}
+svg{
+  height: 1rem;
+  cursor: pointer;
+  color: var(--font-color);
+  transition: all 0.3s ease-in-out;
+}
+svg:hover{
+  height: 1.4rem;
+}
+.number-page, .pagination-options{
+    min-width: 2rem;
+    text-align: center;
+}
+
+.number-page:hover{
+  font-size: 1.5rem;
+  cursor: pointer;
+}

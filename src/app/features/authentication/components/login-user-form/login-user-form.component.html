@@ -1,0 +1,26 @@
+<div class="login-container">
+  <div class="login-form">
+    <img src="assets/logo_0.png" class="logo-login" alt="Uniautonoma" srcset="assets/logo_1.png" />
+
+    <h1>Bienvenido UniAutonomo</h1>
+
+    <div class="login-field">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" [(ngModel)]="email" />
+    </div>
+
+    <div class="login-field">
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" [(ngModel)]="password" />
+    </div>
+
+    <div class="center">
+      <button (click)="onLogin()" class="input-btn">Login</button>
+    </div>
+
+    <div class="center">
+      <a href="#" class="a-type-2">Olvidé la contraseña</a>
+    </div>
+  </div>
+</div>
+

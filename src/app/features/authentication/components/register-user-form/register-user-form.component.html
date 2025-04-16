@@ -1,0 +1,26 @@
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="register-form">
+  <input formControlName="name" placeholder="First name" required />
+  <input formControlName="lastName" placeholder="Last name" required />
+  <input formControlName="email" placeholder="Email" type="email" required />
+  <input formControlName="password" placeholder="Password" type="password" required />
+  <input formControlName="studentCode" placeholder="Student Code" required />
+  <input formControlName="docNum" placeholder="Document Number" required />
+  <input formControlName="docType" placeholder="Document Type" required />
+  <input formControlName="phone" placeholder="Phone" required />
+
+  <select formControlName="role">
+    <option value="STUDENT">Student</option>
+    <option value="TEACHER">Teacher</option>
+    <option value="ADMIN">Admin</option>
+  </select>
+
+  <input formControlName="researchGroupId" placeholder="Research Group ID" type="number" required />
+
+  <select formControlName="status">
+    <option value="ACTIVE">Active</option>
+    <option value="INACTIVE">Inactive</option>
+  </select>
+
+  <button type="submit" [disabled]="form.invalid">Register</button>
+</form>
