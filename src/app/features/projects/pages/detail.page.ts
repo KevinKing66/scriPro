@@ -1,23 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 import { FloatingButtonComponent } from '../../../shared/components/floating-button/floating-button.component';
-import { AuthService } from '../../authentication/service/auth.service';
-import { ProjectListComponent } from '../components/project-list/project-list.component';
+import { ProjectDetailsComponent } from '../components/others/project-details/project-details.component';
+import { ProjectService } from '../service/project.service';
+import { Projects } from '../model/project.model';
+import { LoadingComponent } from '../../../shared/components/loading/loading.component';
 
 @Component({
   standalone: true,
   selector: 'app-project-detail-page',
-  imports: [CommonModule, ProjectListComponent, FloatingButtonComponent],
+  imports: [CommonModule, ProjectDetailsComponent, FloatingButtonComponent, LoadingComponent],
   template: `
-    <app-project-list></app-project-list>
+    @if(project) {
+      <app-project-details [project]=project></app-project-details>
+    }
+    @else {
+      <p>Loading...</p>
+    }
     <floating-button></floating-button>
   `
 })
-export class ProjectDetailPage {
-  constructor(private authService: AuthService, private router: Router) { }
+export class ProjectDetailPage implements OnInit {
 
-  fetchData(data: any) {
+  constructor(private projectService: ProjectService, private router: Router, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.uuid = this.route.snapshot.paramMap.get('uuid') || '';
+
+    if (!this.uuid) {
+      this.router.navigate(['/projects']);
+      return;
+    }
+    this.findByUuid();
+  }
+
+  uuid: string = '';
+
+  project: Projects | null = null;
+
+  findByUuid() {
+    this.projectService.getById(this.uuid).subscribe((value: Projects) => {
+      this.project = value;
+    });
   }
 }
