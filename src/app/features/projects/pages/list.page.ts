@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { FloatingButtonComponent } from '../../../shared/components/floating-button/floating-button.component';
 import { AuthService } from '../../authentication/service/auth.service';
-import { ProjectListComponent } from '../components/project-list/project-list.component';
+import { ProjectListComponent } from '../components/others/project-list/project-list.component';
 
 @Component({
   standalone: true,
