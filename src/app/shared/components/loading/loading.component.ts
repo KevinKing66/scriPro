@@ -7,16 +7,15 @@ import { Component, signal } from '@angular/core';
   styleUrl: './loading.component.css'
 })
 export class LoadingComponent {
-
-  private dots = signal('');
-  loadingText = signal('Cargando...');
+  private text = 'Cargando...';
+  private index = signal(0);
+  loadingText = signal('');
 
   constructor() {
-    let count = 0;
     setInterval(() => {
-      count = (count + 1) % 4; // 0,1,2,3 → 0
-      this.dots.set('.'.repeat(count));
-      this.loadingText.set('Cargando' + this.dots());
-    }, 500);
+      const currentIndex = this.index() + 1;
+      this.index.set(currentIndex % (this.text.length + 1)); // Reinicia al final del texto
+      this.loadingText.set(this.text.substring(0, this.index()));
+    }, 150);
   }
 }
