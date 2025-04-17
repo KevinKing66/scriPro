@@ -17,7 +17,7 @@ import { LoadingComponent } from '../../../shared/components/loading/loading.com
       <app-project-details [project]=project></app-project-details>
     }
     @else {
-      <p>Loading...</p>
+      <app-loading></app-loading>
     }
     <floating-button></floating-button>
   `
@@ -33,7 +33,7 @@ export class ProjectDetailPage implements OnInit {
       this.router.navigate(['/projects']);
       return;
     }
-    this.findByUuid();
+    // this.findByUuid();
   }
 
   uuid: string = '';
@@ -41,8 +41,12 @@ export class ProjectDetailPage implements OnInit {
   project: Projects | null = null;
 
   findByUuid() {
-    this.projectService.getById(this.uuid).subscribe((value: Projects) => {
-      this.project = value;
+    this.projectService.getById(this.uuid).subscribe((res: Projects) => {
+      if(!res) {
+        this.router.navigate(['/projects']);
+        return;
+      }
+      this.project = res;
     });
   }
 }
