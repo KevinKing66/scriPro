@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ProjectCardComponent } from '../project-card/project-card.component';
-import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
+import { PaginationComponent } from '../../../../../shared/components/pagination/pagination.component';
 
 @Component({
     selector: 'app-project-list',
