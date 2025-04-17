@@ -22,5 +22,6 @@ export const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginPage },
+  { pathMatch : 'prefix', path: '', redirectTo: 'projects' },
   //
 ];
