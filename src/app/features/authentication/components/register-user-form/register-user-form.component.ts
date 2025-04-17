@@ -1,14 +1,13 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
-import { User } from '../../../model/user.model';
+import { ReactiveFormsModule, FormBuilder, Validators, FormGroup, FormControl, FormsModule } from '@angular/forms';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-register-user-form',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './log-up.component.html',
-  styleUrl: './log-up.component.css'
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  templateUrl: './register-user-form.component.html',
+  styleUrl: './register-user-form.component.css'
 })
 // RegisterUserFormComponent
 export class RegisterUserFormComponent {

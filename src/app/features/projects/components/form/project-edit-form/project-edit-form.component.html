@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="edit-form">
+  <div class="form-field">
+    <label>Nombre del Proyecto</label>
+    <input formControlName="name" type="text" />
+  </div>
+
+  <div class="form-field">
+    <label>Descripción</label>
+    <textarea formControlName="description"></textarea>
+  </div>
+
+  <div class="form-field">
+    <label>Estado</label>
+    <select formControlName="status">
+      <option value="ACTIVE">Activo</option>
+      <option value="INACTIVE">Inactivo</option>
+      <option value="PAUSED">Pausado</option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label>Grupo de investigación</label>
+    <input formControlName="researchGroupId" type="number" />
+  </div>
+
+  <div class="form-actions center">
+    <button type="submit" [disabled]="form.invalid">Actualizar</button>
+  </div>
+</form>

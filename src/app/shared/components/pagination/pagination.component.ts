@@ -2,11 +2,10 @@ import { Component, computed, Input, Signal, signal, WritableSignal } from '@ang
 
 import { CommonModule } from '@angular/common';
 @Component({
-  selector: 'app-pagination',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './pagination.component.html',
-  styleUrl: './pagination.component.css'
+    selector: 'app-pagination',
+    imports: [CommonModule],
+    templateUrl: './pagination.component.html',
+    styleUrl: './pagination.component.css'
 })
 export class PaginationComponent {
   @Input() maxPages: number = 1;

@@ -1,12 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { Projects } from '../../../model/project.model';
+import { Projects } from '../../model/project.model';
 
 @Component({
-  selector: 'project-card',
-  standalone: true,
-  imports: [],
-  templateUrl: './project-card.component.html',
-  styleUrl: './project-card.component.css'
+    selector: 'project-card',
+    imports: [],
+    templateUrl: './project-card.component.html',
+    styleUrl: './project-card.component.css'
 })
 export class ProjectCardComponent {
   @Input() project: Projects = {

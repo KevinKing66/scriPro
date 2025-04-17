@@ -8,16 +8,14 @@ import { ProjectListComponent } from '../components/project-list/project-list.co
 
 @Component({
   standalone: true,
-  selector: 'app-project-list-page',
+  selector: 'app-project-detail-page',
   imports: [CommonModule, ProjectListComponent, FloatingButtonComponent],
   template: `
-  <div class="d-flex">
     <app-project-list></app-project-list>
     <floating-button></floating-button>
-  </div>
   `
 })
-export class ProjectListPage {
+export class ProjectDetailPage {
   constructor(private authService: AuthService, private router: Router) { }
 
   fetchData(data: any) {

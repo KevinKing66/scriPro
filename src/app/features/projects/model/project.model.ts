@@ -25,7 +25,7 @@ export interface ResearchGroup {
   url?: string;
 }
 
-export interface Evidences{
+export interface Evidences {
   uuid: string;
   projectUuid: string;
   creationDateTime: Date;

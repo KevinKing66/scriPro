@@ -1,0 +1,9 @@
+app-header {
+    position: sticky;
+    top: 10px;
+}
+
+app-project-list-page{
+  display: flex;
+  height: min-content;
+}

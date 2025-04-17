@@ -1,22 +1,24 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { RegisterUserFormComponent } from '../components/register-user-form/register-user-form.component';
 import { AuthService } from '../service/auth.service';
+import { LoginUserFormComponent } from '../components/login-user-form/login-user-form.component';
+import { User } from '../models/user.model';
 
 @Component({
   standalone: true,
-  selector: 'app-register-page',
-  imports: [CommonModule, RegisterUserFormComponent],
+  selector: 'app-login-page',
+  imports: [CommonModule, LoginUserFormComponent],
   template: `
     <h2>Registro de usuario</h2>
     <app-login-user-form (submitted)="login($event)" />
   `
 })
-export class RegisterPage {
+export class LoginPage {
   constructor(private authService: AuthService, private router: Router) { }
 
-  login(data: any) {
+  login(data: User) {
+    console.log('Login data:', data);
     this.authService.register(data).subscribe({
       next: () => this.router.navigate(['/auth/login']),
       error: err => console.error('Registration failed', err)

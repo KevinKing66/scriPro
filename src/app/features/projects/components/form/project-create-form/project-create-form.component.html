@@ -1,0 +1,53 @@
+<form [formGroup]="projectForm" (ngSubmit)="submitForm()">
+  <div>
+    <label for="name">Nombre del Proyecto</label>
+    <input id="name" formControlName="name" />
+  </div>
+
+  <div>
+    <label for="description">Descripción</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+
+  <div>
+    <label for="creationDateTime">Fecha de Creación</label>
+    <input type="datetime-local" id="creationDateTime" formControlName="creationDateTime" />
+  </div>
+
+  <div>
+    <label for="status">Estado</label>
+    <select id="status" formControlName="status">
+      <option value="ACTIVE">Activo</option>
+      <option value="INACTIVE">Inactivo</option>
+      <option value="PAUSED">Pausado</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="researchGroupId">Grupo de Investigación</label>
+    <input id="researchGroupId" formControlName="researchGroupId" />
+  </div>
+
+  <div>
+    <h4>Miembros</h4>
+    <button type="button" (click)="addMember()">Añadir Miembro</button>
+    <div *ngFor="let member of members.controls; let i = index">
+      <input [formControlName]="i" />
+    </div>
+  </div>
+
+  <div>
+    <h4>Evidencias</h4>
+    <button type="button" (click)="addEvidence()">Añadir Evidencia</button>
+    <div *ngFor="let evidence of evidences.controls; let i = index">
+      <div [formGroupName]="i">
+        <label for="description">Descripción</label>
+        <input id="description" formControlName="description" />
+        <label for="type">Tipo</label>
+        <input id="type" formControlName="type" />
+      </div>
+    </div>
+  </div>
+
+  <button type="submit">Crear Proyecto</button>
+</form>

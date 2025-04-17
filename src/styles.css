@@ -90,7 +90,7 @@ input, select{
 .content{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     flex-wrap: wrap;
     align-items: center;
     min-height: 100%;
