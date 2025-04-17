@@ -7,7 +7,7 @@ export interface Projects{
   creationDateTime: Date;
   updatedAt?: Date;
   status: 'ACTIVE' | 'INACTIVE' | 'PAUSED';
-  members: [];
+  members: {code: string, name: string}[];
   researchGroupId?: number;
 }
 
@@ -28,9 +28,9 @@ export interface ResearchGroup {
 export interface Evidences {
   uuid: string;
   projectUuid: string;
+  url: string;
   creationDateTime: Date;
   description: string;
-  filePath: string;
   fileName: string;
   type: string;
 }
