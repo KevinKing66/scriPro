@@ -5,10 +5,13 @@ import { User } from '../../models/user.model';
 import { Roles } from '../../../../shared/enums/role.enum';
 import { RoleLabelPipe } from '../../../../shared/pipes/role-label.pipe';
 import { DocumentTypeLabelPipe } from '../../../../shared/pipes/document-type-label.pipe';
+import { UserStatus } from '../../../../shared/enums/status.enum';
+import { DocumentTypes } from '../../../../shared/enums/document-type.enum';
+import { UserStatusLabelPipe } from '../../../../shared/pipes/user-status-label.pipe';
 
 @Component({
   selector: 'app-register-user-form',
-  imports: [CommonModule, RoleLabelPipe, DocumentTypeLabelPipe, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, RoleLabelPipe, DocumentTypeLabelPipe, UserStatusLabelPipe, ReactiveFormsModule, FormsModule],
   templateUrl: './register-user-form.component.html',
   styleUrls: ['./register-user-form.component.css', '../../../../shared/styles/form.css'],
 })
@@ -16,11 +19,12 @@ import { DocumentTypeLabelPipe } from '../../../../shared/pipes/document-type-la
 export class RegisterUserFormComponent {
   @Output() submitted = new EventEmitter<User>();
 
-  roleKeys = Object.keys(Roles);
-  roles = Roles;
+  roleKeys: string[] = Object.keys(Roles);
 
-  documentTypeKeys = Object.keys(Roles);
-  documentTypes = Roles;
+  documentTypeKeys: string[] = Object.keys(DocumentTypes);
+
+  statusKeys: string[] = Object.keys(UserStatus);
+
 
   private formBuilder = inject(FormBuilder);
 

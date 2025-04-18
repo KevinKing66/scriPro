@@ -11,7 +11,7 @@
 
 
   <select formControlName="docType">
-    <option *ngFor="let type of documentTypeKeys" [value]="role">
+    <option *ngFor="let type of documentTypeKeys" [value]="type">
       {{ type | documentTypeLabel }}
     </option>
   </select>
@@ -28,8 +28,9 @@
   <input formControlName="researchGroupId" placeholder="Research Group ID" type="number" required />
 
   <select formControlName="status">
-    <option value="ACTIVE">Activo</option>
-    <option value="INACTIVE">Desactivo</option>
+    <option *ngFor="let status of statusKeys" [value]="status">
+      {{ status | userStatusLabel }}
+    </option>
   </select>
 
   <button type="submit" [disabled]="form.invalid">Register</button>
