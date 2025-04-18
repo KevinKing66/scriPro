@@ -8,7 +8,7 @@ import { Projects } from '../../../model/project.model';
   selector: 'app-project-create-form',
   imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterModule],
   templateUrl: './project-create-form.component.html',
-  styleUrl: './project-create-form.component.css'
+  styleUrls: ['./project-create-form.component.css', '../../../../../shared/styles/form.css']
 })
 export class ProjectCreateFormComponent implements OnInit {
   @Input() initialData: any = null; // Para recibir datos iniciales si los hay
@@ -22,7 +22,7 @@ export class ProjectCreateFormComponent implements OnInit {
     this.projectForm = this.fb.group({
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      creationDateTime: [new Date(), [Validators.required]],
+      creationDateTime: [new Date()],
       status: ['ACTIVE', [Validators.required]],
       researchGroupId: [null, [Validators.required]],
       members: this.fb.array([]),

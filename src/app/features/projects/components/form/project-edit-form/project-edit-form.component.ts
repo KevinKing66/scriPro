@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   selector: 'app-project-edit-form',
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './project-edit-form.component.html',
-  styleUrl: './project-edit-form.component.css'
+  styleUrls: ['./project-edit-form.component.css', '../../../../../shared/styles/form.css']
 })
 export class ProjectEditFormComponent implements OnChanges {
   @Input() project!: Projects;

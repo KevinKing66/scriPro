@@ -1,20 +1,17 @@
-<form [formGroup]="projectForm" (ngSubmit)="submitForm()">
-  <div>
+<p class="title">Creación de Proyecto</p>
+<form [formGroup]="projectForm" (ngSubmit)="submitForm()" class="form">
+  <div class="form-field">
     <label for="name">Nombre del Proyecto</label>
     <input id="name" formControlName="name" />
   </div>
 
-  <div>
+  <div class="form-field">
     <label for="description">Descripción</label>
     <textarea id="description" formControlName="description"></textarea>
   </div>
 
-  <div>
-    <label for="creationDateTime">Fecha de Creación</label>
-    <input type="datetime-local" id="creationDateTime" formControlName="creationDateTime" />
-  </div>
 
-  <div>
+  <div class="form-field">
     <label for="status">Estado</label>
     <select id="status" formControlName="status">
       <option value="ACTIVE">Activo</option>

@@ -19,7 +19,7 @@ import { LoadingComponent } from '../../../shared/components/loading/loading.com
     @else {
       <app-loading></app-loading>
     }
-    <floating-button></floating-button>
+    <floating-button [route]=destiny></floating-button>
   `
 })
 export class ProjectDetailPage implements OnInit {
@@ -38,6 +38,7 @@ export class ProjectDetailPage implements OnInit {
   }
 
   uuid: string = '';
+  destiny: string | string[] = ['create'];
 
   project: Projects | null = null;
 
@@ -90,7 +91,7 @@ export class ProjectDetailPage implements OnInit {
         { code: '123456', name: 'Juan Perez' },
         { code: '654321', name: 'Maria Lopez' }
       ],
-      evidences: [evidenceDoc1, evidencePdf, evidenceImg],
+      evidences: [evidenceDoc1, evidencePdf, evidenceImg,],
       imageUrl: "img/proyecto.png",
     } as Projects;
 
