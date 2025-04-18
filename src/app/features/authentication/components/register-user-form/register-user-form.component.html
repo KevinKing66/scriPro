@@ -11,19 +11,19 @@
 
 
   <select formControlName="docType">
-    <option value="TI">Tarjeta de identidad</option>
-    <option value="CC">Cedula de ciudadania</option>
-    <option value="P">Pasaporte</option>
+    <option *ngFor="let type of documentTypeKeys" [value]="role">
+      {{ type | documentTypeLabel }}
+    </option>
   </select>
-
-  <input formControlName="docType" placeholder="Tipo de documento" required />
-  <input formControlName="phone" placeholder="Numero contacto" required />
 
   <select formControlName="role">
-    <option value="STUDENT">Student</option>
-    <option value="TEACHER">Teacher</option>
-    <option value="ADMIN">Admin</option>
+    <option *ngFor="let role of roleKeys" [value]="role">
+      {{ role | roleLabel }}
+    </option>
   </select>
+
+  <input formControlName="phone" placeholder="Numero telefonico" required />
+
 
   <input formControlName="researchGroupId" placeholder="Research Group ID" type="number" required />
 
