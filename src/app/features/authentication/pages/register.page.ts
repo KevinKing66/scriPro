@@ -9,7 +9,6 @@ import { AuthService } from '../service/auth.service';
   selector: 'app-register-page',
   imports: [CommonModule, RegisterUserFormComponent],
   template: `
-    <h2>Register</h2>
     <app-register-user-form (submitted)="register($event)" />
   `
 })

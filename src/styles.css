@@ -109,3 +109,7 @@ input, select{
   width: 100vw;
   height: 100vh;
 }
+
+.dark-mode-bg{
+  background-color: var(--main-color-nigth-mode);
+}

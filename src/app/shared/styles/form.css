@@ -1,7 +1,7 @@
 .form{
     display: flex;
     flex-direction: column;
-    padding: 0 5rem;
+    padding: 0 5rem 5rem 5rem;
     margin: 0 auto;
     color: var(--font-color);
     border-radius: 10px;

@@ -10,7 +10,6 @@ import { User } from '../models/user.model';
   selector: 'app-login-page',
   imports: [CommonModule, LoginUserFormComponent],
   template: `
-    <h2>Registro de usuario</h2>
     <app-login-user-form (submitted)="login($event)" />
   `
 })

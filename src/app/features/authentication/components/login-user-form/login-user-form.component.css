@@ -6,6 +6,7 @@
     margin-top: 5rem;
     background-color: var(--second-color-nigth-mode);
     border-radius: 10px;
+    color: white !important
 }
 .login-field{
     display: flex;
@@ -23,3 +24,12 @@
 .logo-login{
     max-height: 10rem;
 }
+
+label{
+  color: white !important;
+}
+
+.title{
+  color: white !important;
+}
+

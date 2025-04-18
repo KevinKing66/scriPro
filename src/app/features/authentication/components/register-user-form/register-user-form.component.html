@@ -2,31 +2,51 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
   <p class="title">Creación de usuario</p>
 
-  <input formControlName="name" placeholder="Nombres" required />
-  <input formControlName="lastName" placeholder="Apellidos" required />
-  <input formControlName="email" placeholder="Email" type="email" required />
-  <input formControlName="password" placeholder="Contraseña" type="password" required />
-  <input formControlName="studentCode" placeholder="Código estudiante" required />
-  <input formControlName="docNum" placeholder="Numero documento" required />
+  <label for="name">Nombre</label>
+  <input formControlName="name" placeholder="Nombres" required id="name"/>
+
+  <label for="lastName">Apellidos</label>
+  <input formControlName="lastName" placeholder="Apellidos" required id="lastName" />
+
+  <label for="email">Email</label>
+  <input formControlName="email" placeholder="Email" type="email" required id="lastName" />
+
+  <label for="password">Contraseña</label>
+  <input formControlName="password" placeholder="Contraseña" type="password" required id="password"/>
+
+  <label for="studentCode">Código de estudiante</label>
+  <input formControlName="studentCode" placeholder="Código estudiante" required id="studentCode"/>
+
+  <label for="docNum">Numero de documento</label>
+  <input formControlName="docNum" placeholder="Numero documento" required id="docNum" />
 
 
+  <label for="docType">Tipo de documento</label>
   <select formControlName="docType">
     <option *ngFor="let type of documentTypeKeys" [value]="type">
       {{ type | documentTypeLabel }}
     </option>
   </select>
 
-  <select formControlName="role">
+
+  <label for="role">Contraseña</label>
+  <select formControlName="role" id="role">
     <option *ngFor="let role of roleKeys" [value]="role">
       {{ role | roleLabel }}
     </option>
   </select>
 
-  <input formControlName="phone" placeholder="Numero telefonico" required />
+
+  <label for="phone">Numero de telefono</label>
+  <input formControlName="phone" placeholder="Numero telefonico" id="phone" required />
 
 
-  <input formControlName="researchGroupId" placeholder="Research Group ID" type="number" required />
 
+  <label for="researchGroupId">Grupo de investiganción</label>
+  <input formControlName="researchGroupId" id="researchGroupId" placeholder="Research Group ID" type="number" required />
+
+
+  <label for="status" status="status">Estados</label>
   <select formControlName="status">
     <option *ngFor="let status of statusKeys" [value]="status">
       {{ status | userStatusLabel }}
