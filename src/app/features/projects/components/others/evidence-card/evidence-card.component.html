@@ -1,0 +1,25 @@
+<div class="evidence-card">
+  <div class="image-container">
+    <ng-container *ngIf="isImage(); else fileIcon">
+      <img [src]="evidence.url" alt="evidence image" />
+    </ng-container>
+
+    <ng-template #fileIcon>
+      <img
+        *ngIf="isPdf()"
+        src="img/pdf.png"
+        alt="PDF icon"
+      />
+      <img
+        *ngIf="isDocument()"
+        src="img/doc.png"
+        alt="Document icon"
+      />
+    </ng-template>
+  </div>
+
+  <div class="file-info">
+    <strong>{{ evidence.fileName }}</strong>
+    <p>{{ formatDate(evidence.creationDateTime) }}</p>
+  </div>
+</div>
