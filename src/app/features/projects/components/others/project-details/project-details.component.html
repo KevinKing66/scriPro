@@ -1,1 +1,40 @@
-<p>project-details works!</p>
+<div class="content">
+  <div class="card-detail">
+    <div class="card-detail-img center">
+        <img [src]="project?.imageUrl" alt="">
+    </div>
+
+
+    <div class="card-content">
+      <h1 class="card-title">{{ project?.name }}</h1>
+      <div class="description">
+        <p>{{ project?.description }}</p>
+      </div>
+
+      <div class="members">
+        <h2>Miembros:</h2>
+        @for(member of project?.members; track member){
+          <div class="card-member">
+              <h3>{{ member.name }}</h3>
+          </div>
+        }
+      </div>
+
+      <div class="evidence">
+
+        @for(evidence of project?.evidences; track evidence){
+          <app-evidence-card [evidence]="evidence"></app-evidence-card>
+        }
+
+
+        <div class="card-add-evidence">
+            <p>+</p>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
