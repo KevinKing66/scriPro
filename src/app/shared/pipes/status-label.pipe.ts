@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { UserStatus } from '../enums/status.enum';
 
 @Pipe({
   name: 'statusLabel',
@@ -7,11 +8,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class StatusLabelPipe implements PipeTransform {
   /**
    * Transforms the status value to a human-readable label.
-   * @param value The status value to transform.
+   * @param key The status value to transform.
    * @returns The transformed status label.
    */
-  transform(value: 'ACTIVE' | 'INACTIVE'): string {
-    return value === 'ACTIVE' ? 'Activo' : 'Inactivo';
+  transform(key: string): string {
+    return UserStatus[key as keyof typeof UserStatus] || "Desconocido"; // Mapeo de clave a valor
   }
 
 }
