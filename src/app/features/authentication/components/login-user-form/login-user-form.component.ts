@@ -7,7 +7,7 @@ import { User } from '../../models/user.model';
   selector: 'app-login-user-form',
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './login-user-form.component.html',
-  styleUrl: './login-user-form.component.css'
+  styleUrls: ['./login-user-form.component.css', '../../../../shared/styles/form.css']
 })
 export class LoginUserFormComponent {
   @Output() submitted = new EventEmitter<User>();

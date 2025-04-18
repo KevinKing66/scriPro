@@ -1,13 +1,23 @@
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="register-form">
-  <input formControlName="name" placeholder="First name" required />
-  <input formControlName="lastName" placeholder="Last name" required />
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+  <p class="title">Creación de usuario</p>
+
+  <input formControlName="name" placeholder="Nombres" required />
+  <input formControlName="lastName" placeholder="Apellidos" required />
   <input formControlName="email" placeholder="Email" type="email" required />
-  <input formControlName="password" placeholder="Password" type="password" required />
-  <input formControlName="studentCode" placeholder="Student Code" required />
-  <input formControlName="docNum" placeholder="Document Number" required />
-  <input formControlName="docType" placeholder="Document Type" required />
-  <input formControlName="phone" placeholder="Phone" required />
+  <input formControlName="password" placeholder="Contraseña" type="password" required />
+  <input formControlName="studentCode" placeholder="Código estudiante" required />
+  <input formControlName="docNum" placeholder="Numero documento" required />
+
+
+  <select formControlName="docType">
+    <option value="TI">Tarjeta de identidad</option>
+    <option value="CC">Cedula de ciudadania</option>
+    <option value="P">Pasaporte</option>
+  </select>
+
+  <input formControlName="docType" placeholder="Tipo de documento" required />
+  <input formControlName="phone" placeholder="Numero contacto" required />
 
   <select formControlName="role">
     <option value="STUDENT">Student</option>
