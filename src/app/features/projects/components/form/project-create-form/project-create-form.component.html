@@ -20,9 +20,13 @@
     </select>
   </div>
 
-  <div>
-    <label for="researchGroupId">Grupo de Investigación</label>
-    <input id="researchGroupId" formControlName="researchGroupId" />
+  <div class="form-field">
+    <label for="researchGroupId">Grupo de Investigación: </label>
+    <select id="researchGroupId" formControlName="researchGroupId">
+      <option *ngFor="let group of researchGroups" [value]="group.code">
+        {{ group.name }}
+      </option>
+    </select>
   </div>
 
   <div>

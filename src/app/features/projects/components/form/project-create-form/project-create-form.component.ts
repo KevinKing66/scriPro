@@ -16,15 +16,21 @@ export class ProjectCreateFormComponent implements OnInit {
 
   projectForm!: FormGroup;
 
+  researchGroups: { code: string, name: string }[] = [{code: 'GR1', name: 'Grupo de Investigación 1'}, {code: 'GR2', name: 'Grupo de Investigación 2'}];
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    let reSearchGroupPreselected = null;
+    if(this.researchGroups.length > 0) {
+      reSearchGroupPreselected = this.researchGroups[0].code; // Preseleccionar el primer grupo de investigación
+    }
     this.projectForm = this.fb.group({
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
       creationDateTime: [new Date()],
       status: ['ACTIVE', [Validators.required]],
-      researchGroupId: [null, [Validators.required]],
+      researchGroupId: [reSearchGroupPreselected, [Validators.required]],
       members: this.fb.array([]),
       evidences: this.fb.array([])
     });
