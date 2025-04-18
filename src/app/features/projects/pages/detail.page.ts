@@ -74,8 +74,8 @@ export class ProjectDetailPage implements OnInit {
       url: 'img/proyecto.png',
       uuid: 'evidence-uuid',
       description: 'Este es prueba de un pdf',
-      fileName: 'prueba.pdf',
-      type: 'application/pdf'
+      fileName: 'proyecto.png',
+      type: 'image/png'
     };
 
 

@@ -46,16 +46,16 @@
     height: 15rem;
 }
 .card-add-evidence{
-    width: 2rem;
-    height: 2rem;
-    padding: 1rem;
-    font-size: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    padding: 2rem;
+    font-size: 5.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--third-color-nigth-mode);
     color: var(--main-color);
-    border-radius: 30px;
+    border-radius: 100%;
     font-weight: lighter;
 }
 
