@@ -92,7 +92,6 @@ input, select{
 .center{
     display: flex;
     justify-content: center;
-    padding: 5px 0px;
 }
 
 /* Content */
