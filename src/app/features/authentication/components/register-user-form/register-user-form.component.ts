@@ -25,6 +25,7 @@ export class RegisterUserFormComponent {
 
   statusKeys: string[] = Object.keys(UserStatus);
 
+  researchGroups: { code: string, name: string }[] = [{ code: 'GR1', name: 'Grupo de Investigación 1' }, { code: 'GR2', name: 'Grupo de Investigación 2' }];
 
   private formBuilder = inject(FormBuilder);
 

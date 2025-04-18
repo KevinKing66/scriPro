@@ -41,9 +41,14 @@
   <input formControlName="phone" placeholder="Numero telefonico" id="phone" required />
 
 
-
-  <label for="researchGroupId">Grupo de investiganción</label>
-  <input formControlName="researchGroupId" id="researchGroupId" placeholder="Research Group ID" type="number" required />
+  <div class="form-field">
+    <label for="researchGroupId">Semillero: </label>
+    <select id="researchGroupId" formControlName="researchGroupId">
+      <option *ngFor="let group of researchGroups" [value]="group.code">
+        {{ group.name }}
+      </option>
+    </select>
+  </div>
 
 
   <label for="status" status="status">Estados</label>
