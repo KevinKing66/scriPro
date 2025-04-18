@@ -9,5 +9,7 @@ import { RouterModule } from '@angular/router';
     styleUrl: './floating-button.component.css'
 })
 export class FloatingButtonComponent {
+  @Input() route: string | string[] = 'create';
+  @Input() customElement: string = "+";
   @Input() icon: string = 'add';
 }
