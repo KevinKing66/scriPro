@@ -16,8 +16,7 @@
   max-width: 80%;
   margin: 2rem 0px 0.5rem 0px;
   border-radius: 30px;
-  background-color: var(--font-color);
-  color: var(--font-color-nigth-mode);
+  color: #00478dde;
 }
 
 .card-detail-img{
