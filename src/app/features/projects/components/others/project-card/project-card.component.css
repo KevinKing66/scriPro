@@ -28,7 +28,19 @@
     font-weight: 800;
 }
 
+p{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
 @media (orientation: portrait) {
+    *{
+      font-size: 14px;
+    }
     .card img{
         max-height: 236px;
         border-radius: 30px;
