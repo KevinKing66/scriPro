@@ -7,7 +7,7 @@ import { User } from '../../models/user.model';
   selector: 'app-register-user-form',
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './register-user-form.component.html',
-  styleUrl: './register-user-form.component.css'
+  styleUrls: ['./register-user-form.component.css', '../../../../shared/styles/form.css'],
 })
 // RegisterUserFormComponent
 export class RegisterUserFormComponent {
