@@ -1,20 +1,20 @@
 export interface User{
   email: string;
-  studentCode: string;
+  code: string;
   name: string;
   lastName: string;
   password: string;
   role: 'STUDENT' | 'TEACHER' | 'ADMIN';
-  researchGroupId: number;
+  researchGroupId?: number;
   status: 'ACTIVE' | 'INACTIVE';
   docNum: string;
   docType: string;
-  phone: string;
+  phone?: string;
 }
 
 export interface Role{
   code: string;
   name: string;
-  status: 'ACTIVE' | 'INACTIVE';
-  permissions: string[];
+  status?: 'ACTIVE' | 'INACTIVE';
+  permissions?: string[];
 }

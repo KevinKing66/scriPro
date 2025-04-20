@@ -34,7 +34,7 @@ export class RegisterUserFormComponent {
     lastName: this.formBuilder.control('', Validators.required),
     email: this.formBuilder.control('', [Validators.required, Validators.email]),
     password: this.formBuilder.control('', Validators.required),
-    studentCode: this.formBuilder.control('', Validators.required),
+    code: this.formBuilder.control('', Validators.required),
     docNum: this.formBuilder.control('', Validators.required),
     docType: this.formBuilder.control(this.documentTypeKeys[0], Validators.required),
     phone: this.formBuilder.control('', Validators.required),
