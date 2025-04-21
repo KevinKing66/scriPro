@@ -6,6 +6,7 @@ import { ProjectEditPage } from './features/projects/pages/edit.page';
 import { LoginPage } from './features/authentication/pages/login.page';
 import { RegisterPage } from './features/authentication/pages/register.page';
 import { MainLayoutComponent } from './shared/layouts/main/main-layout.component';
+import { UserListPage } from './features/users/pages/user-list-page/user-list.page';
 
 export const routes: Routes = [
   {
@@ -16,7 +17,9 @@ export const routes: Routes = [
       { path: ':uuid', component: ProjectDetailPage },
     ]
   },
-  { path: 'user', component: MainLayoutComponent, children: [
+  {
+    path: 'user', component: MainLayoutComponent, children: [
+      { path: '', component: UserListPage },
       { path: 'create', component: RegisterPage },
       { path: 'edit/:uuid', component: RegisterPage },
     ]
