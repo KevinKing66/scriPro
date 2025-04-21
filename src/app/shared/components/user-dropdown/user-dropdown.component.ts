@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../../../features/authentication/service/auth.service';
+import { AuthService } from '../../../core/service/auth.service';
 
 @Component({
     selector: 'user-dropdown',
