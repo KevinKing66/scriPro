@@ -1,0 +1,34 @@
+<div class="column">
+  <div class="card-detail">
+    <div class="card-content">
+      <h1 class="title">{{ user.name }} {{ user.lastName }}</h1>
+
+      <div class="description">
+        <p>Email: {{ user.email }}</p>
+      </div>
+
+      <div class="description">
+        <p>Email: {{ user.docNum }}</p>
+      </div>
+
+      <div class="description">
+        <p>Email: {{ user.docType | documentTypeLabel}}</p>
+      </div>
+
+      <div class="description">
+        <p>Código: {{ user.code }}</p>
+      </div>
+      <div class="description">
+        <p>Role : {{ user.role | roleLabel}}</p>
+      </div>
+      @if (user.researchGroupId !== null) {
+      <div class="description">
+        <p>Semillero: {{ user.code }}</p>
+      </div>
+      }
+      <div class="description">
+        <p>Estado : {{ user.status | userStatusLabel}}</p>
+      </div>
+    </div>
+  </div>
+</div>

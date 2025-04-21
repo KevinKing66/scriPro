@@ -7,7 +7,7 @@ export interface User{
   password: string;
   role: 'STUDENT' | 'TEACHER' | 'ADMIN';
   researchGroupId?: string;
-  status: 'ACTIVE' | 'INACTIVE';
+  status: 'ACTIVE' | 'DESACTIVE';
   docNum: string;
   docType: string;
   phone?: string;
@@ -16,6 +16,6 @@ export interface User{
 export interface Role{
   code: string;
   name: string;
-  status?: 'ACTIVE' | 'INACTIVE';
+  status?: 'ACTIVE' | 'DESACTIVE';
   permissions?: string[];
 }

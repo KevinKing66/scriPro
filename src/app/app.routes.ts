@@ -6,7 +6,8 @@ import { ProjectEditPage } from './features/projects/pages/edit.page';
 import { LoginPage } from './features/authentication/pages/login.page';
 import { RegisterPage } from './features/authentication/pages/register.page';
 import { MainLayoutComponent } from './shared/layouts/main/main-layout.component';
-import { UserListPage } from './features/users/pages/user-list-page/user-list.page';
+import { UserListPage } from './features/users/pages/user-list/user-list.page';
+import { UserDetailPage } from './features/users/pages/user-detail/user-detail.page';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,7 @@ export const routes: Routes = [
       { path: '', component: UserListPage },
       { path: 'create', component: RegisterPage },
       { path: 'edit/:uuid', component: RegisterPage },
+      { path: ':uuid', component: UserDetailPage },
     ]
   },
   { path: 'login', component: LoginPage },

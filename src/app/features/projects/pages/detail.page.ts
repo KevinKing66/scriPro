@@ -38,7 +38,7 @@ export class ProjectDetailPage implements OnInit {
   }
 
   uuid: string = '';
-  destiny: string | string[] = ['create'];
+  destiny: string | string[] = ['/projects/create'];
 
   project: Projects | null = null;
 
