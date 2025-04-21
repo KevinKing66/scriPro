@@ -81,15 +81,15 @@ export class ProjectDetailPage implements OnInit {
 
 
     this.project = {
-      uuid: this.uuid,
+      code: this.uuid,
       name: "Proyecto De Investigación y detencion por IA",
       description: "Laborum labore adipisicing culpa ut occaecat eiusmod Lorem reprehenderit occaecat ipsum. Incididunt exercitation aute quis cupidatat sint cillum non non reprehenderit. Eiusmod elit esse consectetur non. Mollit mollit excepteur qui velit est ullamco consequat.",
       status: "ACTIVE",
       creationDateTime: new Date(),
       updatedAt: new Date(),
       members: [
-        { code: '123456', name: 'Juan Perez' },
-        { code: '654321', name: 'Maria Lopez' }
+        { email: '123456', name: 'Juan Perez' },
+        { email: '654321', name: 'Maria Lopez' }
       ],
       evidences: [evidenceDoc1, evidencePdf, evidenceImg,],
       imageUrl: "img/proyecto.png",

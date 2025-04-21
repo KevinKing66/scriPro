@@ -34,16 +34,16 @@ export class ProjectEditPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const uuid: string | null = this.route.snapshot.paramMap.get('uuid');
-    if(uuid) {
-      this.projectService.getById(uuid).subscribe((data) => {
+    const code: string | null = this.route.snapshot.paramMap.get('uuid');
+    if(code) {
+      this.projectService.getById(code).subscribe((data) => {
         this.project = data;
       });
     }
   }
 
   onUpdate(updatedProject: Projects): void {
-    this.projectService.update(this.project.uuid!, updatedProject).subscribe(() => {
+    this.projectService.update(this.project.code!, updatedProject).subscribe(() => {
       // redirige o muestra feedback
       alert('Proyecto actualizado con éxito.');
     });

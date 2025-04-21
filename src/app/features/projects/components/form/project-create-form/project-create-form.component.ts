@@ -26,6 +26,7 @@ export class ProjectCreateFormComponent implements OnInit {
       reSearchGroupPreselected = this.researchGroups[0].code; // Preseleccionar el primer grupo de investigación
     }
     this.projectForm = this.fb.group({
+      code: ['', [Validators.required]],
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
       creationDateTime: [new Date()],

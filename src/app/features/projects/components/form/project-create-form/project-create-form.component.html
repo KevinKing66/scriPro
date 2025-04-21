@@ -1,6 +1,11 @@
 <p class="title">Creación de Proyecto</p>
 <form [formGroup]="projectForm" (ngSubmit)="submitForm()" class="form">
   <div class="form-field">
+    <label for="code">Código del Proyecto</label>
+    <input id="code" formControlName="code" />
+  </div>
+
+  <div class="form-field">
     <label for="name">Nombre del Proyecto</label>
     <input id="name" formControlName="name" />
   </div>
