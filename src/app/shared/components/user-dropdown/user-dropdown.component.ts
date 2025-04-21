@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../../features/authentication/service/auth.service';
 
 @Component({
     selector: 'user-dropdown',
@@ -9,10 +10,13 @@ import { RouterModule } from '@angular/router';
     styleUrl: './user-dropdown.component.css'
 })
 export class UserDropdownComponent {
+  authService = inject(AuthService);
+  router: Router = inject(Router);
   showMenu = signal(false);
 
   logout() {
-    console.log('Cerrar sesión');
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

@@ -2,17 +2,20 @@ import { Component } from '@angular/core';
 import { UserListComponent } from '../../components/user-list/user-list.component';
 import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
 import { User } from '../../../authentication/models/user.model';
+import { FloatingButtonComponent } from '../../../../shared/components/floating-button/floating-button.component';
+import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 
 @Component({
   selector: 'app-user-list-page',
-  imports: [UserListComponent, PaginationComponent],
+  imports: [UserListComponent, PaginationComponent, FloatingButtonComponent, LoadingComponent],
   templateUrl: './user-list.page.html',
   styleUrl: './user-list.page.css'
 })
 export class UserListPage {
   maxPages: number = 0;
   page: number = 1;
-  users: User[] = [
+  destiny: string | string[] = ['create'];
+  users: User[] | null = [
     {
       "_id": "6805683643e3930f93e62131",
       "email": "kevinvallenato2002@gmail.com",

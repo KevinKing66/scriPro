@@ -1,4 +1,14 @@
-<div class="d-flex center column">
-  <app-user-list [users]="users"></app-user-list>
-  <app-pagination [maxPages]="maxPages"></app-pagination>
-</div>
+@if(users == null) {
+  <app-loading></app-loading>
+} @else if (users.length == 0) {
+  <div class="column">
+    <h1>No se encontraron usuarios</h1>
+  </div>
+} @else {
+  <div class="d-flex center column">
+    <app-user-list [users]="users"></app-user-list>
+    <app-pagination [maxPages]="maxPages"></app-pagination>
+  </div>
+}
+
+<floating-button [route]=destiny></floating-button>

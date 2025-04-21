@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #007bff; /* Color de fondo */
+  background-color: #0056b3; /* Color de fondo */
   color: white;
   border: none;
   border-radius: 50%;
@@ -19,7 +19,7 @@
 }
 
 .floating-button:hover {
-  background-color: #0056b3; /* Color de fondo al pasar el mouse */
+  background-color: #007bff; /* Color de fondo al pasar el mouse */
 }
 
 .floating-button i {

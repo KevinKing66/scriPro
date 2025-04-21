@@ -14,7 +14,7 @@ import { FloatingButtonComponent } from '../../../shared/components/floating-but
   template: `
     <div class="d-flex">
       <app-project-create-form (formSubmit)="handleSubmit($event)"/>
-      <floating-button [route]=destiny customElement="<"></floating-button>
+      <floating-button [route]=destiny content="<"></floating-button>
     </div>
   `
 })
