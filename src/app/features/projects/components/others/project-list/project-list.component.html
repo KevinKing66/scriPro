@@ -4,7 +4,9 @@
     <project-card></project-card>
     <project-card></project-card>
     <project-card></project-card>
-
+    @for(project of projects; track project) {
+      <project-card [project]="project"></project-card>
+    }
   </div>
 
   <app-pagination [maxPages]=10></app-pagination>
