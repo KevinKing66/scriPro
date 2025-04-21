@@ -1,11 +1,12 @@
 export interface User{
+  _id?: string;
   email: string;
   code: string;
   name: string;
   lastName: string;
   password: string;
   role: 'STUDENT' | 'TEACHER' | 'ADMIN';
-  researchGroupId?: number;
+  researchGroupId?: string;
   status: 'ACTIVE' | 'INACTIVE';
   docNum: string;
   docType: string;
