@@ -39,7 +39,7 @@ export class RegisterUserFormComponent {
     docType: this.formBuilder.control(this.documentTypeKeys[0], Validators.required),
     phone: this.formBuilder.control('', Validators.required),
     role: this.formBuilder.control(this.roleKeys[0], Validators.required),
-    researchGroupId: this.formBuilder.control(0, Validators.required),
+    // researchGroupId: this.formBuilder.control(0, Validators.required),
     status: this.formBuilder.control('ACTIVE', Validators.required),
   });
 
