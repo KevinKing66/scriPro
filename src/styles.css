@@ -52,6 +52,9 @@ app-root{
   align-content: center;
   flex-wrap: wrap;
 }
+h1, h2, h3, h4, h5, h6{
+    color: var(--font-color);
+}
 
 a{
     color: var(--font-color-nigth-mode);
@@ -151,6 +154,7 @@ input, select{
   border-radius: 8px;
   color: #02376ce3;
   font-family: Arial, sans-serif;
+  overflow-x: auto;
 }
 
 list-container > h2 {
@@ -159,7 +163,8 @@ list-container > h2 {
 }
 
 table {
-  width: 100%;
+  width: 80%;
+  table-layout: fixed; /* 👈 Importante */
   border-collapse: collapse;
 }
 
@@ -172,6 +177,10 @@ th, td {
   padding: 0.75rem;
   text-align: left;
   border-bottom: 1px solid #ccc;
+  max-width: 25%;         /* 👈 Limita el ancho */
+  overflow: hidden;       /* 👈 Oculta desbordes */
+  text-overflow: ellipsis; /* 👈 Agrega "..." si se pasa */
+  white-space: wrap;    /* 👈 Evita que se parta en varias líneas */
 }
 
 tbody tr:hover {
