@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup, FormControl, FormsModule } from '@angular/forms';
 import { User } from '../../models/user.model';
@@ -17,6 +17,7 @@ import { UserStatusLabelPipe } from '../../../../shared/pipes/user-status-label.
 })
 // RegisterUserFormComponent
 export class RegisterUserFormComponent {
+  @Input() state: "FREE" | "LOADING" | "ERROR" | "SUCCESS" = "FREE";
   @Output() submitted = new EventEmitter<User>();
 
   roleKeys: string[] = Object.keys(Roles);

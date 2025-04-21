@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { RegisterUserFormComponent } from '../components/register-user-form/register-user-form.component';
-import { AuthService } from '../service/auth.service';
+import { AuthService } from '../../../core/service/auth.service';
 import { User } from '../models/user.model';
 import { FloatingButtonComponent } from '../../../shared/components/floating-button/floating-button.component';
 
@@ -16,7 +16,7 @@ import { FloatingButtonComponent } from '../../../shared/components/floating-but
   `
 })
 export class RegisterPage {
-  state: "free" | "loading" | "error" | "success" = "free";
+  state: "FREE" | "LOADING" | "ERROR" | "SUCCESS" = "FREE";
   destiny: string | string[] = ['/users'];
 
   constructor(private authService: AuthService, private router: Router) { }
@@ -29,17 +29,17 @@ export class RegisterPage {
   }
 
   nextFn(){
-    this.state = "success";
+    this.state = "SUCCESS";
     setTimeout(() => {
-      this.state = "free";
+      this.state = "FREE";
     }, 2000);
   // this.router.navigate(['/users'];
   }
 
   errorFn(err: any) {
-    this.state = "error";
+    this.state = "ERROR";
     setTimeout(() => {
-      this.state = "free";
+      this.state = "FREE";
     }, 2000);
     console.error('Registration failed', err)
   }
