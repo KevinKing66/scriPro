@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { AuthService } from './auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { User } from '../models/user.model';
+import { User } from '../../features/authentication/models/user.model';
 
 describe('AuthService', () => {
   let service: AuthService;
