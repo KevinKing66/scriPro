@@ -92,7 +92,37 @@ input, select{
 .center{
     display: flex;
     justify-content: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
+
+.column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+.space-evenly{
+    justify-content: space-evenly;
+}
+.start{
+    justify-content: start;
+}
+
 
 /* Content */
 .content{
@@ -112,4 +142,38 @@ input, select{
 
 .dark-mode-bg{
   background-color: var(--main-color-nigth-mode);
+}
+
+/* list */
+.list-container {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  color: #02376ce3;
+  font-family: Arial, sans-serif;
+}
+
+list-container > h2 {
+  color: #02376ce3;
+  margin-bottom: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #02376ce3;
+  color: white;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+tbody tr:hover {
+  background-color: #f0f8ff;
 }

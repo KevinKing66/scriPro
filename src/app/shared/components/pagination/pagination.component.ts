@@ -36,6 +36,12 @@ export class PaginationComponent {
       this.page.update((p) => p - 1);
     }
   }
+  nextPageExists() {
+    return this.page() < this.maxPages - 1 && this.maxPages > 1;
+  }
+  previousPageExists() {
+    return this.page() > 0 && this.maxPages > 1;
+  }
 
   next() {
     if (this.page() < this.maxPages - 1) {
