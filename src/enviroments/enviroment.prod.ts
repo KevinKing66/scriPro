@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  url: 'https://mi-backend.com/api',
+  url: 'http://localhost:3000',
   jwtSecret: 'dummy'
 };
