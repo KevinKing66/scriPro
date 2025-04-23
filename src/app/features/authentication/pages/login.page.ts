@@ -10,17 +10,22 @@ import { User } from '../models/user.model';
   selector: 'app-login-page',
   imports: [CommonModule, LoginUserFormComponent],
   template: `
-    <app-login-user-form (submitted)="login($event)" />
+    <app-login-user-form [state]="pageState" (submitted)="login($event)" />
   `
 })
 export class LoginPage {
+  pageState: "FREE" | "LOADING" | "SUCCESS" | "ERROR" = "FREE";
   constructor(private authService: AuthService, private router: Router) { }
 
   login(data: User) {
-    console.log('Login data:', data);
-    this.authService.register(data).subscribe({
-      next: () => this.router.navigate(['/auth/login']),
-      error: err => console.error('Registration failed', err)
+    this.pageState = "LOADING";
+    this.authService.login(data).subscribe({
+      next: () => {
+        this.router.navigate(['/projects']);
+      },
+      error: err => {
+        console.error('Registration failed', err);
+        this.pageState = "ERROR";}
     });
   }
 }
