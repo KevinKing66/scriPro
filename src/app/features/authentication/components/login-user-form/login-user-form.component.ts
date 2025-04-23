@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
 
 @Component({
@@ -10,13 +10,32 @@ import { User } from '../../models/user.model';
   styleUrls: ['./login-user-form.component.css', '../../../../shared/styles/form.css']
 })
 export class LoginUserFormComponent {
+  @Input() state: "FREE" | "LOADING" | "ERROR" | "SUCCESS" = "FREE";
   @Output() submitted = new EventEmitter<User>();
 
-  email: string = '';
-  password: string = '';
+  form: FormGroup;
 
-  onLogin() {
-    this.submitted.emit({ email: this.email, password: this.password } as User);
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
   }
 
+  onLogin() {
+    if (this.form.valid) {
+      this.submitted.emit(this.form.value as User);
+      this.form.reset();
+    } else {
+      this.form.markAllAsTouched();
+    }
+  }
+
+  get email() {
+    return this.form.get('email');
+  }
+
+  get password() {
+    return this.form.get('password');
+  }
 }
