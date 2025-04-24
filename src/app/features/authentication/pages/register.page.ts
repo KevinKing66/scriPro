@@ -11,12 +11,13 @@ import { FloatingButtonComponent } from '../../../shared/components/floating-but
   selector: 'app-register-page',
   imports: [CommonModule, RegisterUserFormComponent, FloatingButtonComponent],
   template: `
-    <app-register-user-form (submitted)="register($event)" />
+    <app-register-user-form [state]="state" [errorMsg]="errorMsg" (submitted)="register($event)" />
     <floating-button [route]=destiny content="<"></floating-button>
   `
 })
 export class RegisterPage {
   state: "FREE" | "LOADING" | "ERROR" | "SUCCESS" = "FREE";
+  errorMsg: string = "";
   destiny: string | string[] = ['/users'];
 
   constructor(private authService: AuthService, private router: Router) { }
@@ -29,18 +30,21 @@ export class RegisterPage {
   }
 
   nextFn(){
+    this.errorMsg = "";
     this.state = "SUCCESS";
     setTimeout(() => {
       this.state = "FREE";
-    }, 2000);
+    }, 8000);
   // this.router.navigate(['/users'];
   }
 
   errorFn(err: any) {
+    console.log("Error: ", err);
     this.state = "ERROR";
     setTimeout(() => {
       this.state = "FREE";
-    }, 2000);
+    }, 15000);
+    this.errorMsg = err.error.message || err.error || err.message || err;
     console.error('Registration failed', err)
   }
 }

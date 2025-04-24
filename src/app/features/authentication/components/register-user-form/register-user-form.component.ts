@@ -8,6 +8,7 @@ import { DocumentTypeLabelPipe } from '../../../../shared/pipes/document-type-la
 import { UserStatus } from '../../../../shared/enums/status.enum';
 import { DocumentTypes } from '../../../../shared/enums/document-type.enum';
 import { UserStatusLabelPipe } from '../../../../shared/pipes/user-status-label.pipe';
+import { ResearchGroup } from '../../../projects/model/project.model';
 
 @Component({
   selector: 'app-register-user-form',
@@ -20,13 +21,16 @@ export class RegisterUserFormComponent {
   @Input() state: "FREE" | "LOADING" | "ERROR" | "SUCCESS" = "FREE";
   @Output() submitted = new EventEmitter<User>();
 
+  @Input()
+  errorMsg: string = "";
+
   roleKeys: string[] = Object.keys(Roles);
 
   documentTypeKeys: string[] = Object.keys(DocumentTypes);
 
   statusKeys: string[] = Object.keys(UserStatus);
 
-  researchGroups: { code: string, name: string }[] = [{ code: 'GR1', name: 'Grupo de Investigación 1' }, { code: 'GR2', name: 'Grupo de Investigación 2' }];
+  researchGroups: ResearchGroup[] = [];
 
   private formBuilder = inject(FormBuilder);
 
@@ -47,7 +51,10 @@ export class RegisterUserFormComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      this.submitted.emit(this.form.getRawValue() as User);
+      this.submitted.emit(this.form.value as User);
+      // this.form.reset();
+    } else {
+      this.form.markAllAsTouched();
     }
   }
 }

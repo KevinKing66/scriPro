@@ -1,68 +1,86 @@
-
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
   <p class="title">Creación de usuario</p>
 
   <label for="name">Nombre</label>
   <input formControlName="name" placeholder="Nombres" required id="name"/>
+  <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="error">
+    <small *ngIf="form.get('name')?.errors?.['required']">El nombre es requerido.</small>
+  </div>
 
   <label for="lastName">Apellidos</label>
   <input formControlName="lastName" placeholder="Apellidos" required id="lastName" />
+  <div *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched" class="error">
+    <small *ngIf="form.get('lastName')?.errors?.['required']">El apellido es requerido.</small>
+  </div>
 
   <label for="email">Email</label>
-  <input formControlName="email" placeholder="Email" type="email" required id="lastName" />
+  <input formControlName="email" placeholder="Email" type="email" required id="email" />
+  <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="error">
+    <small *ngIf="form.get('email')?.errors?.['required']">El correo es requerido.</small>
+    <small *ngIf="form.get('email')?.errors?.['email']">Formato de correo inválido.</small>
+  </div>
 
   <label for="password">Contraseña</label>
   <input formControlName="password" placeholder="Contraseña" type="password" required id="password"/>
+  <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="error">
+    <small *ngIf="form.get('password')?.errors?.['required']">La contraseña es requerida.</small>
+  </div>
 
   <label for="code">Código de estudiante</label>
   <input formControlName="code" placeholder="Código estudiante" required id="code"/>
+  <div *ngIf="form.get('code')?.invalid && form.get('code')?.touched" class="error">
+    <small *ngIf="form.get('code')?.errors?.['required']">El código es requerido.</small>
+  </div>
 
-  <label for="docNum">Numero de documento</label>
+  <label for="docNum">Número de documento</label>
   <input formControlName="docNum" placeholder="Numero documento" required id="docNum" />
-
+  <div *ngIf="form.get('docNum')?.invalid && form.get('docNum')?.touched" class="error">
+    <small *ngIf="form.get('docNum')?.errors?.['required']">El número de documento es requerido.</small>
+  </div>
 
   <label for="docType">Tipo de documento</label>
-  <select formControlName="docType">
+  <select formControlName="docType" id="docType">
     <option *ngFor="let type of documentTypeKeys" [value]="type">
       {{ type | documentTypeLabel }}
     </option>
   </select>
+  <div *ngIf="form.get('docType')?.invalid && form.get('docType')?.touched" class="error">
+    <small *ngIf="form.get('docType')?.errors?.['required']">El tipo de documento es requerido.</small>
+  </div>
 
-
-  <label for="role">Contraseña</label>
+  <label for="role">Rol</label>
   <select formControlName="role" id="role">
     <option *ngFor="let role of roleKeys" [value]="role">
       {{ role | roleLabel }}
     </option>
   </select>
+  <div *ngIf="form.get('role')?.invalid && form.get('role')?.touched" class="error">
+    <small *ngIf="form.get('role')?.errors?.['required']">El rol es requerido.</small>
+  </div>
 
-
-  <label for="phone">Numero de telefono</label>
+  <label for="phone">Número de teléfono</label>
   <input formControlName="phone" placeholder="Numero telefonico" id="phone" required />
+  <div *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched" class="error">
+    <small *ngIf="form.get('phone')?.errors?.['required']">El número de teléfono es requerido.</small>
+  </div>
 
-
-  <!-- <div class="form-field">
-    <label for="researchGroupId">Semillero: </label>
-    <select id="researchGroupId" formControlName="researchGroupId">
-      <option *ngFor="let group of researchGroups" [value]="group.code">
-        {{ group.name }}
-      </option>
-    </select>
-  </div> -->
-
-
-  <label for="status" status="status">Estados</label>
-  <select formControlName="status">
+  <label for="status">Estado</label>
+  <select formControlName="status" id="status">
     <option *ngFor="let status of statusKeys" [value]="status">
       {{ status | userStatusLabel }}
     </option>
   </select>
+  <div *ngIf="form.get('status')?.invalid && form.get('status')?.touched" class="error">
+    <small *ngIf="form.get('status')?.errors?.['required']">El estado es requerido.</small>
+  </div>
+
   @if (state === "LOADING"){
     <p class="loading">Esperando respuesta.</p>
   } @else if (state === "ERROR"){
     <p class="error">Error al crear el usuario.</p>
+    <p class="error">{{ errorMsg }}</p>
   } @else if (state === "SUCCESS"){
-    <p class="success">Usuario creado con exito.</p>
+    <p class="success">Usuario creado con éxito.</p>
   }
 
   @if (state === "FREE" || state === "SUCCESS" || state === "ERROR"){
