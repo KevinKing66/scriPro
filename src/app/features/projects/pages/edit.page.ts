@@ -36,7 +36,7 @@ export class ProjectEditPage implements OnInit {
   ngOnInit(): void {
     const code: string | null = this.route.snapshot.paramMap.get('uuid');
     if(code) {
-      this.projectService.getById(code).subscribe((data) => {
+      this.projectService.findOne(code).subscribe((data) => {
         this.project = data;
       });
     }

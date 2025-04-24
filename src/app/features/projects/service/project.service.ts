@@ -17,7 +17,7 @@ export class ProjectService {
     throw new Error('Method not implemented.');
   }
 
-  getById(uuid: string): import("rxjs").Observable<Projects> {
+  findOne(uuid: string): import("rxjs").Observable<Projects> {
     throw new Error('Method not implemented.');
   }
 
