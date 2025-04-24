@@ -43,7 +43,7 @@ export class ProjectDetailPage implements OnInit {
   project: Projects | null = null;
 
   findByUuid() {
-    this.projectService.getById(this.uuid).subscribe((res: Projects) => {
+    this.projectService.findOne(this.uuid).subscribe((res: Projects) => {
       if(!res) {
         this.router.navigate(['/projects']);
         return;
