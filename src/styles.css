@@ -192,3 +192,20 @@ th, td {
 tbody tr:hover {
   background-color: #f0f8ff;
 }
+
+.error{
+  color: red;
+  font-size: 0.9rem;
+  margin: 0.5rem;
+}
+.success{
+  color: green;
+  font-size: 0.9rem;
+  margin: 0.5rem;
+}
+.warning{
+  color: orange;
+  font-size: 0.9rem;
+  margin: 0.5rem;
+}
+
