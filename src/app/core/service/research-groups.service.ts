@@ -16,16 +16,16 @@ export class ResearchGroupsService {
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   findAll(): Observable<ResearchGroup[]> {
-    return this.http.get<ResearchGroup[]>(`${this.apiUrl}/research-groups`);
+    return this.http.get<ResearchGroup[]>(`${this.apiUrl}`);
   }
 
   find(code: string): Observable<ResearchGroup> {
-    return this.http.get<ResearchGroup>(`${this.apiUrl}/research-groups/${code}`);
+    return this.http.get<ResearchGroup>(`${this.apiUrl}/${code}`);
   }
   create(researchGroup: ResearchGroup): Observable<ResearchGroup> {
-    return this.http.post<ResearchGroup>(`${this.apiUrl}/research-groups`, researchGroup);
+    return this.http.post<ResearchGroup>(`${this.apiUrl}`, researchGroup);
   }
   update(code: string, researchGroup: ResearchGroup): Observable<ResearchGroup> {
-    return this.http.patch<ResearchGroup>(`${this.apiUrl}/research-groups/${code}`, researchGroup);
+    return this.http.patch<ResearchGroup>(`${this.apiUrl}/${code}`, researchGroup);
   }
 }
