@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { Projects } from '../../../model/project.model';
+import { Projects, ResearchGroup } from '../../../model/project.model';
 
 @Component({
   selector: 'app-project-create-form',
@@ -11,12 +11,14 @@ import { Projects } from '../../../model/project.model';
   styleUrls: ['./project-create-form.component.css', '../../../../../shared/styles/form.css']
 })
 export class ProjectCreateFormComponent implements OnInit {
+  @Input() state: "FREE" | "LOADING" | "ERROR" | "SUCCESS" = "FREE";
+  @Input() errorMsg: string = ""; // Para mostrar mensajes de error
   @Input() initialData: any = null; // Para recibir datos iniciales si los hay
   @Output() formSubmit = new EventEmitter<any>(); // Para emitir los datos del formulario al padre
 
   projectForm!: FormGroup;
 
-  researchGroups: { code: string, name: string }[] = [{code: 'GR1', name: 'Grupo de Investigación 1'}, {code: 'GR2', name: 'Grupo de Investigación 2'}];
+  @Input() researchGroups: ResearchGroup[] = [];
 
   constructor(private fb: FormBuilder) { }
 

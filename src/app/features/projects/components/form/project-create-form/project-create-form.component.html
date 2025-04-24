@@ -55,5 +55,16 @@
     </div>
   </div>
 
-  <button type="submit">Crear Proyecto</button>
+  @if (state === "LOADING"){
+    <p class="loading">Esperando respuesta.</p>
+  } @else if (state === "ERROR"){
+    <p class="error">Error al crear el usuario.</p>
+    <p class="error">{{ errorMsg }}</p>
+  } @else if (state === "SUCCESS"){
+    <p class="success">Usuario creado con éxito.</p>
+  }
+
+  @if (state === "FREE" || state === "SUCCESS" || state === "ERROR"){
+    <button type="submit" [disabled]="form.invalid">Crear Proyecto</button>
+}
 </form>
