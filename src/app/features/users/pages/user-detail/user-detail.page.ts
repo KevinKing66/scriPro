@@ -1,28 +1,44 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../../../authentication/models/user.model';
 import { UserDetailComponent } from '../../components/user-detail/user-detail.component';
 import { FloatingButtonComponent } from '../../../../shared/components/floating-button/floating-button.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../../service/user.service';
+import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-detail.page',
-  imports: [UserDetailComponent, FloatingButtonComponent],
+  imports: [CommonModule, UserDetailComponent, FloatingButtonComponent, LoadingComponent],
   templateUrl: './user-detail.page.html',
   styleUrl: './user-detail.page.css'
 })
-export class UserDetailPage {
-  @Input() user: User = {
-    "_id": "6805683643e3930f93e62131",
-    "email": "kevinvallenato2002@gmail.com",
-    "code": "20250",
-    "name": "Kevin",
-    "lastName": "Caicedo",
-    "password": "$2b$10$FvRqIm5G25.cIuAhZReI.efzkZmeLBRjsxuYf86K8kgjL3RQ2UOUC",
-    "role": "ADMIN",
-    "status": "ACTIVE",
-    "docNum": "1003235293",
-    "docType": "CC",
-    "phone": "+573158618906",
-  };
+export class UserDetailPage implements OnInit {
+  @Input() user?: User;
   destiny: string | string[] = ['/users'];
 
+
+  constructor(private service: UserService, private router: Router, private route: ActivatedRoute) { }
+  email: string = "";
+
+  ngOnInit() {
+    this.email = this.route.snapshot.paramMap.get('email') || '';
+
+    if (!this.email) {
+      this.router.navigate(['/projects']);
+      return;
+    }
+    this.find();
+  }
+
+  find(){
+    this.service.findOne(this.email).subscribe({
+      next: (data: User) => {
+        this.user = data;
+      },
+      error: (err: any) => {
+        console.error(err);
+      }
+    });
+  }
 }
