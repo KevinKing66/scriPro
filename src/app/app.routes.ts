@@ -22,8 +22,8 @@ export const routes: Routes = [
     path: 'users', component: MainLayoutComponent, children: [
       { path: '', component: UserListPage },
       { path: 'create', component: RegisterPage },
-      { path: 'edit/:uuid', component: RegisterPage },
-      { path: ':uuid', component: UserDetailPage },
+      { path: 'edit/:email', component: RegisterPage },
+      { path: ':email', component: UserDetailPage },
     ]
   },
   { path: 'login', component: LoginPage },
