@@ -8,6 +8,9 @@ import { RegisterPage } from './features/authentication/pages/register.page';
 import { MainLayoutComponent } from './shared/layouts/main/main-layout.component';
 import { UserListPage } from './features/users/pages/user-list/user-list.page';
 import { UserDetailPage } from './features/users/pages/user-detail/user-detail.page';
+import { UserProfilePage } from './features/users/pages/user-profile/user-profile.page';
+import { ChangePasswordPage } from './features/authentication/pages/change-password/change-password.page';
+import { ForgotPasswordPage } from './features/authentication/pages/forgot-password/forgot-password.page';
 
 export const routes: Routes = [
   {
@@ -22,8 +25,20 @@ export const routes: Routes = [
     path: 'users', component: MainLayoutComponent, children: [
       { path: '', component: UserListPage },
       { path: 'create', component: RegisterPage },
+      { path: 'profile', component: UserProfilePage },
       { path: 'edit/:email', component: RegisterPage },
       { path: ':email', component: UserDetailPage },
+    ]
+  },
+  {
+    path: 'authentication', component: MainLayoutComponent, children: [
+      { path: 'register', component: RegisterPage },
+      { path: 'change-password', component: ChangePasswordPage },
+    ]
+  },
+  {
+    path: 'authentication', children: [
+      { path: 'forgot-password', component: ForgotPasswordPage },
     ]
   },
   { path: 'login', component: LoginPage },

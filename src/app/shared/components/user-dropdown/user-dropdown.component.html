@@ -4,8 +4,8 @@
     </label>
     <input type="checkbox" id="menu-toggle">
     <div class="menu">
-      <a href="user-info">Perfil</a>
-      <a routerLink="/users">usuarios</a>
+      <a [routerLink]="['/users/profile']">Perfil</a>
+      <a [routerLink]="['/users']">Lista usuarios</a>
       <a [routerLink]="['/login']" (click)="logout()">Cerrar sesión</a>
     </div>
 
