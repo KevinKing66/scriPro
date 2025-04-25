@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginDto } from '../../features/authentication/models/login.dto';
 import { environment } from '../../../enviroments/enviroment';
+import { ChangePassword } from '../../features/authentication/models/change-password';
+import { ForgotPassword } from '../../../../../../backend/scri-pro/src/auth/dto/forgot-password.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +22,14 @@ export class AuthService {
     return this.http.post<User>(`${this.apiUrl}/register`, user);
   }
 
+  changePassword(credentials: ChangePassword): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/change-password`, credentials);
+  }
+
+  forgotPassword(credentials: ForgotPassword): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/change-password`, credentials);
+  }
+
   login(user: LoginDto): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/login`, user);
   }
@@ -30,6 +40,10 @@ export class AuthService {
 
   getToken(): string {
     return this.cookieService.get('auth_token');
+  }
+
+  getEmail(): string {
+    return this.cookieService.get('user') as User['email'];
   }
 
   logout(): void {
