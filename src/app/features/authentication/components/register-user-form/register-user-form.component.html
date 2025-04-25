@@ -24,6 +24,10 @@
   <input formControlName="password" placeholder="Contraseña" type="password" required id="password"/>
   <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="error">
     <small *ngIf="form.get('password')?.errors?.['required']">La contraseña es requerida.</small>
+    <small *ngIf="form.get('password')?.errors?.['minlength']">Debe tener al menos 8 caracteres.</small>
+    <small *ngIf="form.get('password')?.errors?.['pattern']">
+    Debe contener al menos una mayúscula, una minúscula, un número y un carácter especial.
+    </small>
   </div>
 
   <label for="code">Código de estudiante</label>
@@ -62,6 +66,7 @@
   <input formControlName="phone" placeholder="Numero telefonico" id="phone" required />
   <div *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched" class="error">
     <small *ngIf="form.get('phone')?.errors?.['required']">El número de teléfono es requerido.</small>
+    <small *ngIf="form.get('phone')?.errors?.['pattern']">Número inválido. Usa entre 10 y 15 dígitos, opcional con "+" al inicio.</small>
   </div>
 
   <label for="status">Estado</label>
