@@ -218,3 +218,13 @@ tbody tr:hover {
   border: none;
   cursor: pointer;
 }
+
+button:enabled{
+    padding: 0.6rem;
+    border: none;
+    background-color: var(--font-color);
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
