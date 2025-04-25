@@ -1,0 +1,7 @@
+@if (user) {
+  <app-user-profile [user]="user!"></app-user-profile>
+}
+@else {
+  <app-loading></app-loading>
+}
+<floating-button [route]="destiny" content="<"></floating-button>
