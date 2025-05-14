@@ -6,7 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { LoginDto } from '../../features/authentication/models/login.dto';
 import { environment } from '../../../enviroments/enviroment';
 import { ChangePassword } from '../../features/authentication/models/change-password';
-import { ForgotPassword } from '../../../../../../backend/scri-pro/src/auth/dto/forgot-password.dto';
+import { ForgotPassword } from '../../features/authentication/models/forgot-password';
 
 @Injectable({
   providedIn: 'root'

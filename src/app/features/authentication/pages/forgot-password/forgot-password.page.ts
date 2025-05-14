@@ -2,8 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ForgotPasswordFormComponent } from '../../components/forgot-password-form/forgot-password-form.component';
 import { AuthService } from '../../../../core/service/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ChangePassword } from '../../../../../../../../backend/scri-pro/src/auth/dto/change-password.dto';
-import { ForgotPassword } from '../../../../../../../../backend/scri-pro/src/auth/dto/forgot-password.dto';
+import { ForgotPassword } from '../../models/forgot-password';
 
 @Component({
   selector: 'app-forgot-password.page',

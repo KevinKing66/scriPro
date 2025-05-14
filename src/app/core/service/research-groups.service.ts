@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ResearchGroup } from '../../../../../../backend/scri-pro/src/research-groups/entities/research-group.entity';
 import { environment } from '../../../enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { ResearchGroup } from '../../features/projects/model/project.model';
 
 @Injectable({
   providedIn: 'root'

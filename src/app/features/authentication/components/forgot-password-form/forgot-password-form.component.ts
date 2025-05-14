@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ForgotPassword } from '../../../../../../../../backend/scri-pro/src/auth/dto/forgot-password.dto';
+import { ForgotPassword } from '../../models/forgot-password';
 
 @Component({
   selector: 'app-forgot-password-form',
