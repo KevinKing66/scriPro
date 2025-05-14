@@ -50,13 +50,6 @@ nav{
     font-size: 18px;
 }
 
-.search-bar{
-    padding: 5px;
-    background: var(--font-color-nigth-mode);
-    color: var(--second-color-nigth-mode);
-    border-radius: 30px;
-}
-
 .header-menu{
     display: flex;
     align-items: center;
