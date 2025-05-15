@@ -1,5 +1,4 @@
 <div class="list-container center column">
-  <h2>Listado de usuarios</h2>
   <table>
     <thead>
       <tr>
@@ -11,7 +10,7 @@
     </thead>
     <tbody>
       @for(user of users; track user._id) {
-        <tr [routerLink]="['/users', user._id]">
+        <tr [routerLink]="['/users', user.email]">
           <td>{{ user.docNum }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.name }} {{ user.lastName }}</td>
