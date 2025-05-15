@@ -6,6 +6,11 @@
   </div>
 } @else {
   <div class="d-flex center column">
+
+    <h2>Listado de usuarios</h2>
+
+    <input type="text" class="search-bar" placeholder="Buscar usuario">
+
     <app-user-list [users]="users"></app-user-list>
     <app-pagination [maxPages]="maxPages"></app-pagination>
   </div>
