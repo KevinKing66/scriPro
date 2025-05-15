@@ -21,4 +21,8 @@ export class UserService {
   findOne(email: string): import("rxjs").Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/${email}`);
   }
+
+  find(): import("rxjs").Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}`);
+  }
 }
