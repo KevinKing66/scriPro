@@ -15,7 +15,6 @@
     <textarea id="description" formControlName="description"></textarea>
   </div>
 
-
   <div class="form-field">
     <label for="status">Estado</label>
     <select id="status" formControlName="status">
@@ -26,9 +25,9 @@
   </div>
 
   <div class="form-field">
-    <label for="researchGroupId">Grupo de Investigación: </label>
+    <label for="researchGroupId">Grupo de Investigación</label>
     <select id="researchGroupId" formControlName="researchGroupId">
-      <option *ngFor="let group of researchGroups" [value]="group.code">
+      <option *ngFor="let group of researchGroups" [value]="group">
         {{ group.name }}
       </option>
     </select>
@@ -37,39 +36,36 @@
   <div>
     <h4>Miembros</h4>
     <button type="button" (click)="addMember()">Añadir Miembro</button>
-    <div *ngFor="let member of members.controls; let i = index">
-      <input [formControlName]="i" />
+    <div formArrayName="members">
+      <div *ngFor="let member of members.controls; let i = index" [formGroupName]="i">
+        <input placeholder="Nombre" formControlName="name" />
+        <input placeholder="Correo" formControlName="email" />
+      </div>
     </div>
   </div>
 
   <div>
     <h4>Evidencias</h4>
     <button type="button" (click)="addEvidence()">Añadir Evidencia</button>
-    <div *ngFor="let evidence of evidences.controls; let i = index">
-      <div class="evidance-card" [formGroupName]="i">
+    <div formArrayName="evidences">
+      <div *ngFor="let evidence of evidences.controls; let i = index" [formGroupName]="i" class="evidance-card">
         <div class="evidance-input-div">
-          <label for="description">Descripción</label>
-          <input id="description" formControlName="description" />
+          <label>Descripción</label>
+          <input formControlName="description" />
         </div>
-
         <div class="evidance-input-div">
-          <label for="type">Evidencia</label>
-          <input id="file" type="file" formControlName="file" />
+          <label>Archivo</label>
+          <input type="file" (change)="onFileChange($event, i)" />
         </div>
       </div>
     </div>
   </div>
 
-  @if (state === "LOADING"){
-    <p class="loading">Esperando respuesta.</p>
-  } @else if (state === "ERROR"){
-    <p class="error">Error al crear el usuario.</p>
-    <p class="error">{{ errorMsg }}</p>
-  } @else if (state === "SUCCESS"){
-    <p class="success">Usuario creado con éxito.</p>
-  }
+  <ng-container [ngSwitch]="state">
+    <p *ngSwitchCase="'LOADING'" class="loading">Esperando respuesta.</p>
+    <p *ngSwitchCase="'ERROR'" class="error">Error al crear el usuario: {{ errorMsg }}</p>
+    <p *ngSwitchCase="'SUCCESS'" class="success">Usuario creado con éxito.</p>
+  </ng-container>
 
-  @if (state === "FREE" || state === "SUCCESS" || state === "ERROR"){
-    <button type="submit" [disabled]="projectForm.invalid">Crear Proyecto</button>
-}
+  <button type="submit" [disabled]="projectForm.invalid">Crear Proyecto</button>
 </form>
