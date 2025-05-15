@@ -16,24 +16,8 @@ import { UserProfileComponent } from '../../components/user-profile/user-profile
 })
 export class UserProfilePage implements OnInit {
   destiny: string | string[] = ['/users'];
-  // user?: User;
+  user?: User;
 
-  // @Input() user!: User;
-  @Input() user: User = {
-    "_id": "6805683643e3930f93e62131",
-    "email": "kevinvallenato2002@gmail.com",
-    "code": "20250",
-    "name": "Kevin",
-    "lastName": "Caicedo",
-    "password": "$2b$10$FvRqIm5G25.cIuAhZReI.efzkZmeLBRjsxuYf86K8kgjL3RQ2UOUC",
-    "role": "ADMIN",
-    "status": "ACTIVE",
-    "docNum": "1003235293",
-    "docType": "CC",
-    "phone": "+573158618906",
-  };
-
-//   destiny: string | string[] = ['/users'];
 
 
   private service: UserService = inject(UserService);
@@ -48,7 +32,8 @@ export class UserProfilePage implements OnInit {
   }
 
   find() {
-    this.service.findOne(this.authService.getEmail()).subscribe({
+    // this.service.findOne(this.authService.getEmail()).subscribe({
+    this.service.findOne("kevinvallenato2002@gmail.com").subscribe({
       next: (data: User) => {
         this.user = data;
       },
