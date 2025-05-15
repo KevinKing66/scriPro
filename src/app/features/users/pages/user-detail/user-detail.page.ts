@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { User } from '../../../authentication/models/user.model';
 import { UserDetailComponent } from '../../components/user-detail/user-detail.component';
 import { FloatingButtonComponent } from '../../../../shared/components/floating-button/floating-button.component';
@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './user-detail.page.html',
   styleUrl: './user-detail.page.css'
 })
-export class UserDetailPage implements OnInit {
+export class UserDetailPage implements OnInit, OnDestroy {
   @Input() user?: User;
   destiny: string | string[] = ['/users'];
 
@@ -29,6 +29,10 @@ export class UserDetailPage implements OnInit {
       return;
     }
     this.find();
+  }
+  
+  ngOnDestroy() {
+    this.user = undefined;
   }
 
   find(){
