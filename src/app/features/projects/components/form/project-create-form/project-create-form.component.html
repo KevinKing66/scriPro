@@ -46,11 +46,16 @@
     <h4>Evidencias</h4>
     <button type="button" (click)="addEvidence()">Añadir Evidencia</button>
     <div *ngFor="let evidence of evidences.controls; let i = index">
-      <div [formGroupName]="i">
-        <label for="description">Descripción</label>
-        <input id="description" formControlName="description" />
-        <label for="type">Tipo</label>
-        <input id="type" formControlName="type" />
+      <div class="evidance-card" [formGroupName]="i">
+        <div class="evidance-input-div">
+          <label for="description">Descripción</label>
+          <input id="description" formControlName="description" />
+        </div>
+
+        <div class="evidance-input-div">
+          <label for="type">Evidencia</label>
+          <input id="file" type="file" formControlName="file" />
+        </div>
       </div>
     </div>
   </div>
