@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, Validators, FormGroup, FormControl, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators, FormGroup, FormControl, FormsModule, FormArray } from '@angular/forms';
 import { User } from '../../models/user.model';
 import { Roles } from '../../../../shared/enums/role.enum';
 import { RoleLabelPipe } from '../../../../shared/pipes/role-label.pipe';
@@ -8,8 +8,8 @@ import { DocumentTypeLabelPipe } from '../../../../shared/pipes/document-type-la
 import { UserStatus } from '../../../../shared/enums/status.enum';
 import { DocumentTypes } from '../../../../shared/enums/document-type.enum';
 import { UserStatusLabelPipe } from '../../../../shared/pipes/user-status-label.pipe';
-import { ResearchGroup } from '../../../projects/model/project.model';
 import { ResearchGroupsService } from '../../../../core/service/research-groups.service';
+import { ResearchGroup } from '../../../research-group/models/research-group.model';
 
 @Component({
   selector: 'app-register-user-form',
@@ -17,7 +17,6 @@ import { ResearchGroupsService } from '../../../../core/service/research-groups.
   templateUrl: './register-user-form.component.html',
   styleUrls: ['./register-user-form.component.css', '../../../../shared/styles/form.css'],
 })
-// RegisterUserFormComponent
 export class RegisterUserFormComponent implements OnInit {
   @Input() state: "FREE" | "LOADING" | "ERROR" | "SUCCESS" = "FREE";
   @Output() submitted = new EventEmitter<User>();
@@ -31,7 +30,7 @@ export class RegisterUserFormComponent implements OnInit {
 
   statusKeys: string[] = Object.keys(UserStatus);
 
-  researchGroups: ResearchGroup[] = [];
+  @Input() researchGroups: ResearchGroup[] = [];
 
   ngOnInit() {
     this.loadResearchGroups();
@@ -55,15 +54,34 @@ export class RegisterUserFormComponent implements OnInit {
     docType: this.formBuilder.control(this.documentTypeKeys[0], Validators.required),
     phone: this.formBuilder.control('', [Validators.required, Validators.pattern(/^\+?\d{10,15}$/)]),
     role: this.formBuilder.control(this.roleKeys[0], Validators.required),
-    researchGroupId: this.formBuilder.control(0, Validators.required),
+    researchGroups: this.formBuilder.array([], Validators.required),
     status: this.formBuilder.control('ACTIVE', Validators.required),
   });
+
+  get researchGroupsArray(): FormArray {
+    return this.form.get('researchGroups') as FormArray;
+  }
+
+  onToggleResearchGroup(event: Event) {
+    const selectElement = event.target as HTMLSelectElement;
+    const selectedOptions = Array.from(selectElement.selectedOptions);
+
+    this.researchGroupsArray.clear();
+
+    selectedOptions.forEach(option => {
+      const group = JSON.parse(option.value);
+      this.researchGroupsArray.push(this.formBuilder.group({
+        code: group.code,
+        name: group.name
+      }));
+    });
+  }
 
 
   onSubmit() {
     if (this.form.valid) {
       this.submitted.emit(this.form.value as User);
-      // this.form.reset();
+      this.form.reset();
     } else {
       this.form.markAllAsTouched();
     }

@@ -69,6 +69,18 @@
     <small *ngIf="form.get('phone')?.errors?.['pattern']">Número inválido. Usa entre 10 y 15 dígitos, opcional con "+" al inicio.</small>
   </div>
 
+  <div class="form-field">
+    <label for="researchGroups">Grupos de Investigación</label>
+    <select id="researchGroups" multiple (change)="onToggleResearchGroup($event)">
+      <option *ngFor="let group of researchGroups" [value]="group | json">
+        {{ group.name }}
+      </option>
+    </select>
+    <div *ngIf="researchGroupsArray.invalid && researchGroupsArray.touched" class="error">
+      <small>Debe seleccionar al menos un grupo de investigación.</small>
+    </div>
+  </div>
+
   <label for="status">Estado</label>
   <select formControlName="status" id="status">
     <option *ngFor="let status of statusKeys" [value]="status">
