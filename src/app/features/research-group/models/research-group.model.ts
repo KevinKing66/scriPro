@@ -1,5 +1,5 @@
 export interface ResearchGroup {
-  code: number;
+  code: string;
   name: string;
   description: string;
   faculty?: string;
