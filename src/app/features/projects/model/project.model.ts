@@ -1,14 +1,18 @@
+import { Member } from "./create-project.model";
+import { FileModel } from "./file.model";
+import { simpleResearchGroup } from "./simple-researchGroup.model";
+
 export interface Projects{
-  code?: string;
-  imageUrl?: string;
+  code: string;
+  image?: FileModel;
   name: string;
   evidences: Evidences[];
   description: string;
   creationDateTime: Date;
   updatedAt?: Date;
   status: 'ACTIVE' | 'COMPLETED' | 'PAUSED';
-  members: {email: string, name: string}[];
-  researchGroupId?: number;
+  members: Member[];
+  researchGroups?: simpleResearchGroup[];
 }
 
 export interface Evidences {

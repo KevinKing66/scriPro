@@ -1,5 +1,5 @@
 <div class="card" [routerLink]="['/projects', project.code]">
-    <img [src]="project.imageUrl" alt="" srcset="">
+    <img [src]="project.image?.url" alt="" srcset="img/proyecto.png">
     <div class="card-description">
         <h1 class="card-title">{{ project.name }}</h1>
         <div class="description">

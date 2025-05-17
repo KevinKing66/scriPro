@@ -16,7 +16,7 @@ export class ProjectCardComponent {
     creationDateTime: new Date(),
     updatedAt: new Date(),
     status:  'ACTIVE',
-    imageUrl: "img/proyecto.png",
+    image: {url: "img/proyecto.png"},
     evidences: [],
     members: [],
   };

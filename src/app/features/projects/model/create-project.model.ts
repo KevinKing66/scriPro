@@ -1,6 +1,9 @@
+import { CreateFileDTO } from "./file.model";
+import { simpleResearchGroup } from "./simple-researchGroup.model";
+
 export interface CreateProject {
   code: string;
-  imageUrl?: string;
+  image?: CreateFileDTO;
   name: string;
   type?: string;
   evidences: CreateEvidence[];
@@ -8,7 +11,7 @@ export interface CreateProject {
   creationDateTime?: Date;
   status: 'ACTIVE' | 'COMPLETED' | 'PAUSED';
   members: Member[];
-  researchGroupId: Member;
+  researchGroup: simpleResearchGroup[];
   adminId: Member;
 }
 

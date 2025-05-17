@@ -92,7 +92,7 @@ export class ProjectDetailPage implements OnInit {
         { email: '654321', name: 'Maria Lopez' }
       ],
       evidences: [evidenceDoc1, evidencePdf, evidenceImg,],
-      imageUrl: "img/proyecto.png",
+      image: {url: "img/proyecto.png"},
     } as Projects;
 
   }
