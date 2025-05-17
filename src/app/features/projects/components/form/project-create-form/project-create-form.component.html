@@ -1,8 +1,13 @@
 <p class="title">Creación de Proyecto</p>
 <form [formGroup]="projectForm" (ngSubmit)="submitForm()" class="form">
+
   <div class="form-field">
-    <label for="image">Imagen del Proyecto</label>
+    <label for="image">Miniatura del Proyecto</label>
     <input type="file" id="image" (change)="onImageChange($event)" />
+    <div *ngIf="projectForm.get('image.content')?.value"  class="column">
+      <p>Vista previa:</p>
+      <img [src]="projectForm.get('image.content')?.value" alt="Vista previa principal" style="max-width: 200px; max-height: 200px;" />
+    </div>
   </div>
 
   <div class="form-field">
@@ -63,6 +68,12 @@
           <label for="file">Archivo</label>
           <input type="file" (change)="onFileChange($event, i)" />
         </div>
+
+        <div *ngIf="evidence.get('content')?.value" class="column">
+          <p>Vista previa:</p>
+          <img [src]="evidence.get('content')?.value" alt="Vista previa" style="max-width: 200px; max-height: 200px;" />
+        </div>
+
         <button type="button" (click)="removeEvidence(i)">Eliminar Evidencia</button>
       </div>
     </div>
