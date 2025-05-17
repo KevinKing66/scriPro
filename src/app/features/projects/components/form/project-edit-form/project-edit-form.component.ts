@@ -20,9 +20,9 @@ export class ProjectEditFormComponent implements OnChanges {
     description: ['', Validators.required],
     imageUrl: [''],
     status: ['ACTIVE', Validators.required],
-    researchGroupId: [null, Validators.required],
+    researchGroups: this.fb.array([]),
     updatedAt: [new Date()],
-    evidences: this.fb.array([]), // si necesitas cargarlas
+    evidences: this.fb.array([]),
     members: this.fb.array([]),
   });
 
@@ -30,7 +30,7 @@ export class ProjectEditFormComponent implements OnChanges {
     if (changes['project'] && this.project) {
       this.form.patchValue({
         ...this.project,
-        updatedAt: new Date(), // actualiza solo la fecha de edición
+        updatedAt: new Date(),
       });
     }
   }
