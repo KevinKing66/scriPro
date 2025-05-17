@@ -85,6 +85,14 @@ export class ProjectCreateFormComponent implements OnInit {
     );
   }
 
+  removeEvidence(index: number): void {
+    this.evidences.removeAt(index);
+  }
+
+  removeMember(index: number): void {
+    this.members.removeAt(index);
+  }
+
   async onFileChange(event: any, index: number): Promise<void> {
     const file = event.target.files[0];
     if (!file) return;
