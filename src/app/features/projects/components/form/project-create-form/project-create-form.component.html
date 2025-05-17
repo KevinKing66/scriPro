@@ -1,6 +1,11 @@
 <p class="title">Creación de Proyecto</p>
 <form [formGroup]="projectForm" (ngSubmit)="submitForm()" class="form">
   <div class="form-field">
+    <label for="image">Imagen del Proyecto</label>
+    <input type="file" id="image" (change)="onImageChange($event)" />
+  </div>
+
+  <div class="form-field">
     <label for="code">Código del Proyecto</label>
     <input id="code" formControlName="code" />
   </div>
@@ -25,9 +30,9 @@
   </div>
 
   <div class="form-field">
-    <label for="researchGroupId">Grupo de Investigación</label>
-    <select id="researchGroupId" formControlName="researchGroupId">
-      <option *ngFor="let group of researchGroups" [value]="group">
+    <label for="researchGroups">Grupos de Investigación</label>
+    <select id="researchGroups" multiple formControlName="researchGroups">
+      <option *ngFor="let group of researchGroups" [ngValue]="group">
         {{ group.name }}
       </option>
     </select>
@@ -50,11 +55,11 @@
     <div formArrayName="evidences">
       <div *ngFor="let evidence of evidences.controls; let i = index" [formGroupName]="i" class="evidance-card">
         <div class="evidance-input-div">
-          <label>Descripción</label>
-          <input formControlName="description" />
+          <label for="description">Descripción</label>
+          <input id="description" formControlName="description" />
         </div>
         <div class="evidance-input-div">
-          <label>Archivo</label>
+          <label for="file">Archivo</label>
           <input type="file" (change)="onFileChange($event, i)" />
         </div>
       </div>
@@ -67,5 +72,5 @@
     <p *ngSwitchCase="'SUCCESS'" class="success">Usuario creado con éxito.</p>
   </ng-container>
 
-  <button type="submit" [disabled]="projectForm.invalid">Crear Proyecto</button>
+  <button type="submit">Crear Proyecto</button>
 </form>
