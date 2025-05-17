@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { ProjectService } from '../service/project.service';
-import { Projects, ResearchGroup } from '../model/project.model';
+import { Projects } from '../model/project.model';
 import { ProjectCreateFormComponent } from '../components/form/project-create-form/project-create-form.component';
 import { FloatingButtonComponent } from '../../../shared/components/floating-button/floating-button.component';
 import { ResearchGroupsService } from '../../../core/service/research-groups.service';
+import { StorageService } from '../../../core/service/storage.service';
+import { ResearchGroup } from '../../research-group/models/research-group.model';
 
 @Component({
   standalone: true,
@@ -20,7 +22,7 @@ import { ResearchGroupsService } from '../../../core/service/research-groups.ser
   `
 })
 export class ProjectCreatePage implements OnInit {
-  constructor(private service: ProjectService, private researchGroupsService: ResearchGroupsService, private router: Router) { }
+  constructor(private service: ProjectService, private researchGroupsService: ResearchGroupsService, private storageService: StorageService, private router: Router) { }
 
   state: "FREE" | "LOADING" | "ERROR" | "SUCCESS" = "FREE";
   errorMsg: string = "";
