@@ -21,9 +21,9 @@
       <div class="description">
         <p>Role : {{ user.role | roleLabel}}</p>
       </div>
-      @if (user.researchGroupId !== null) {
+      @if (user.researchGroups) {
       <div class="description">
-        <p>Semillero: {{ user.code }}</p>
+        <p>Semillero/s: {{ user.researchGroups | researchGroupsLabel }}</p>
       </div>
       }
       <div class="description">
