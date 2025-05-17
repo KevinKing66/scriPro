@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { ResearchGroup } from '../../features/projects/model/project.model';
+import { ResearchGroup } from '../../features/research-group/models/research-group.model';
 
 @Injectable({
   providedIn: 'root'
