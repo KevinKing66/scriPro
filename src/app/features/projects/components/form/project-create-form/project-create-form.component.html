@@ -61,11 +61,11 @@
     <div formArrayName="evidences">
       <div *ngFor="let evidence of evidences.controls; let i = index" [formGroupName]="i" class="evidance-card">
         <div class="evidance-input-div">
-          <label for="description">Descripción</label>
+          <label>Descripción</label>
           <input id="description" formControlName="description" />
         </div>
         <div class="evidance-input-div">
-          <label for="file">Archivo</label>
+          <label>Archivo</label>
           <input type="file" (change)="onFileChange($event, i)" />
         </div>
 
