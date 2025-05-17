@@ -9,7 +9,7 @@ export class ResearchGroupsLabelPipe implements PipeTransform {
     if(list){
       return list.map(e => e.name).join(', ');
     }
-    return "";
+    return "No pertenece a ningún semillero";
   }
 
 }
