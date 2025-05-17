@@ -6,7 +6,7 @@ export interface User{
   lastName: string;
   password: string;
   role: 'STUDENT' | 'TEACHER' | 'ADMIN';
-  researchGroupId?: string;
+  researchGroups?: { code: string; name: string }[];
   status: 'ACTIVE' | 'DESACTIVE';
   docNum: string;
   docType: string;
