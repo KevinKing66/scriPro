@@ -7,6 +7,7 @@ import { LoginDto } from '../../features/authentication/models/login.dto';
 import { environment } from '../../../enviroments/enviroment';
 import { ChangePassword } from '../../features/authentication/models/change-password';
 import { ForgotPassword } from '../../features/authentication/models/forgot-password';
+import { UserWithToken } from '../../features/authentication/models/user-with-token.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +31,8 @@ export class AuthService {
     return this.http.post<User>(`${this.apiUrl}/change-password`, credentials);
   }
 
-  login(user: LoginDto): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/login`, user);
+  login(user: LoginDto): Observable<UserWithToken> {
+    return this.http.post<UserWithToken>(`${this.apiUrl}/login`, user);
   }
 
   setToken(token: string): void {
@@ -40,6 +41,10 @@ export class AuthService {
 
   getToken(): string {
     return this.cookieService.get('auth_token');
+  }
+
+  setUser(user: User): void {
+    this.cookieService.set('user', JSON.stringify(user));
   }
 
   getEmail(): string {
