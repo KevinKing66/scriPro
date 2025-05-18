@@ -5,6 +5,7 @@ import { simpleResearchGroup } from "./simple-researchGroup.model";
 export interface Project{
   _id: string;
   code: string;
+  owner: Member;
   image?: FileModel;
   name: string;
   evidences: Evidences[];
