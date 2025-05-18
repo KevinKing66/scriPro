@@ -29,8 +29,8 @@ export class UserProfilePage implements OnInit {
   }
 
   find() {
-    const _id = this.storageService.getSession().email;
-    this.service.findOne(_id).subscribe({
+    const _id = this.storageService.getSession()?.email;
+    this.service.findOne(_id ?? '').subscribe({
       next: (data: User) => {
         this.user = data;
       },
