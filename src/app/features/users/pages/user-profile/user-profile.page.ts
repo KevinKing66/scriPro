@@ -7,6 +7,7 @@ import { UserDetailComponent } from '../../components/user-detail/user-detail.co
 import { FloatingButtonComponent } from '../../../../shared/components/floating-button/floating-button.component';
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 import { UserProfileComponent } from '../../components/user-profile/user-profile.component';
+import { StorageService } from '../../../../core/service/storage.service';
 
 @Component({
   selector: 'app-user-profile.page',
@@ -18,22 +19,18 @@ export class UserProfilePage implements OnInit {
   destiny: string | string[] = ['/users'];
   user?: User;
 
-
-
   private service: UserService = inject(UserService);
-  private authService: AuthService = inject(AuthService);
+  private storageService: StorageService = inject(StorageService);
   private router: Router = inject(Router);
   private route: ActivatedRoute = inject(ActivatedRoute);
-
-
 
   ngOnInit() {
     this.find();
   }
 
   find() {
-    // this.service.findOne(this.authService.getEmail()).subscribe({
-    this.service.findOne("kevinvallenato2002@gmail.com").subscribe({
+    const _id = this.storageService.getSession().email;
+    this.service.findOne(_id).subscribe({
       next: (data: User) => {
         this.user = data;
       },
