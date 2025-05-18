@@ -9,8 +9,7 @@
 
     <h2>Listado de usuarios</h2>
 
-    <input type="text" class="search-bar" placeholder="Buscar usuario">
-
+    <input type="text" class="search-bar" placeholder="Buscar usuario" [(ngModel)]="filter" (keyup.enter)="onSearch()"/>
     <app-user-list [users]="users"></app-user-list>
     <app-pagination
       [maxPages]="totalPages"

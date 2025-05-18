@@ -7,10 +7,12 @@ import { LoadingComponent } from '../../../../shared/components/loading/loading.
 import { UserService } from '../../service/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaginatedResponse } from '../../../../core/models/pagineted-response.model';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-list-page',
-  imports: [UserListComponent, PaginationComponent, FloatingButtonComponent, LoadingComponent],
+  imports: [CommonModule, FormsModule, UserListComponent, PaginationComponent, FloatingButtonComponent, LoadingComponent],
   templateUrl: './user-list.page.html',
   styleUrl: './user-list.page.css'
 })
@@ -39,6 +41,12 @@ export class UserListPage implements OnInit {
           console.error(err);
         }
       });
+  }
+
+
+  onSearch(): void {
+    this.page = 1; // reiniciar a la primera página si aplica
+    this.fetchData();
   }
 
   onPageChange(newPage: number): void {
