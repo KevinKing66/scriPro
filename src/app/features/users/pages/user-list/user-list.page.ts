@@ -18,7 +18,7 @@ export class UserListPage implements OnInit {
   filter: string = "";
   totalPages: number = 0;
   page: number = 1;
-  elementsPerPage: number = 1;
+  elementsPerPage: number = 10;
   destiny: string | string[] = ['create'];
   users: User[] | null = null;
 
@@ -28,18 +28,18 @@ export class UserListPage implements OnInit {
     this.fetchData();
   }
 
-    fetchData() {
-      this.service.findAll(this.filter, this.page, this.elementsPerPage)
+  fetchData() {
+    this.service.findAll(this.filter, this.page, this.elementsPerPage)
       .subscribe({
-          next: (data: PaginatedResponse<User>) => {
-            this.users = data.data;
-            this.totalPages = data.totalPages;
-          },
-          error: (err: any) => {
-            console.error(err);
-          }
-        });
-    }
+        next: (data: PaginatedResponse<User>) => {
+          this.users = data.data;
+          this.totalPages = data.totalPages;
+        },
+        error: (err: any) => {
+          console.error(err);
+        }
+      });
+  }
 
   onPageChange(newPage: number): void {
     this.page = newPage;
