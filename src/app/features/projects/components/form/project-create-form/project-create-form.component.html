@@ -81,8 +81,8 @@
 
   <ng-container [ngSwitch]="state">
     <p *ngSwitchCase="'LOADING'" class="loading">Esperando respuesta.</p>
-    <p *ngSwitchCase="'ERROR'" class="error">Error al crear el usuario: {{ errorMsg }}</p>
-    <p *ngSwitchCase="'SUCCESS'" class="success">Usuario creado con éxito.</p>
+    <p *ngSwitchCase="'ERROR'" class="error">Error: {{ errorMsg }}</p>
+    <p *ngSwitchCase="'SUCCESS'" class="success">Proyecto creado con éxito.</p>
   </ng-container>
 
   <button type="submit">Crear Proyecto</button>
