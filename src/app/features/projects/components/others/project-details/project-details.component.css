@@ -61,6 +61,7 @@
     color: var(--main-color);
     border-radius: 100%;
     font-weight: lighter;
+    cursor: pointer;
 }
 
 .card-add-evidence h1{
