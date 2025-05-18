@@ -11,6 +11,7 @@ import { EvidenceCardComponent } from '../evidence-card/evidence-card.component'
   styleUrl: './project-details.component.css'
 })
 export class ProjectDetailsComponent {
-
-  @Input() project: Project | null = null;
+  @Input() project!: Project;
+  @Input() isOwner: boolean = false;
+  destiny: string | string[] = ['/projects/edit', this.project?._id];
 }
