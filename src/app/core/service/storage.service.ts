@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Member } from '../../features/projects/model/create-project.model';
+import { User } from '../../features/authentication/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +28,12 @@ export class StorageService {
     return this.getSession() !== null;
   }
 
-  getAdminId(): Member {
+  getUserEmailAndName(): Member {
+    const data = localStorage.getItem(this.sessionKey);
+    const user = JSON.parse(data!) as User;
     return {
-      "email": "kevin.caicedo.d@uniautonoma.edu",
-      "name": "Kevin Caicedo"
+      "email": user.email,
+      "name": user.name
     };
   }
 }

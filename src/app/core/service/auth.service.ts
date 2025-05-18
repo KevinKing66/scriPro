@@ -8,6 +8,7 @@ import { environment } from '../../../enviroments/enviroment';
 import { ChangePassword } from '../../features/authentication/models/change-password';
 import { ForgotPassword } from '../../features/authentication/models/forgot-password';
 import { UserWithToken } from '../../features/authentication/models/user-with-token.model';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AuthService {
   private readonly apiUrl = this.backendUrl + '/auth';
   isRequiredHttps = false;
 
-  constructor(private http: HttpClient, private cookieService: CookieService) { }
+  constructor(private http: HttpClient, private cookieService: CookieService, private storageService: StorageService) { }
 
   register(user: User): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/register`, user);
@@ -43,16 +44,19 @@ export class AuthService {
     return this.cookieService.get('auth_token');
   }
 
-  setUser(user: User): void {
-    this.cookieService.set('user', JSON.stringify(user));
-  }
+  // setUser(user: User): void {
+  //   this.cookieService.set('user', JSON.stringify(user));
+  // }
 
   getEmail(): string {
-    return this.cookieService.get('user') as User['email'];
+    // return this.cookieService.get('user') as User['email'];
+    const user = this.storageService.getSession();
+    return user ? user.email : '';
   }
 
   logout(): void {
     this.cookieService.delete('auth_token');
+    this.storageService.clearSession();
   }
 
   isLoggedIn(): boolean {

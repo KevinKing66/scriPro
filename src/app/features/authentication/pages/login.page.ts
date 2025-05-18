@@ -26,7 +26,6 @@ export class LoginPage {
     this.authService.login(data).subscribe({
       next: (res) => {
         this.storageService.setSession(res.user);
-        this.authService.setUser(res.user);
         this.authService.setToken(res.access_token);
         this.router.navigate(['/projects']);
       },
