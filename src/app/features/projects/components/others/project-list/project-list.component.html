@@ -1,6 +1,6 @@
 <div class="content">
   <div class="list-card">
-    @for(project of projects; track project) {
+    @for(project of projects; track project._id) {
       <project-card [project]="project"></project-card>
     }
   </div>
