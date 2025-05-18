@@ -129,5 +129,6 @@ export class ProjectCreateFormComponent implements OnInit {
 
     this.formSubmit.emit(this.projectForm.value);
     this.projectForm.reset();
+    this.state = 'FREE';
   }
 }
