@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Projects } from '../model/project.model';
+import { Project } from '../model/project.model';
 import { environment } from '../../../../enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
+import { PaginatedResponse } from '../../../core/models/pagineted-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +14,20 @@ export class ProjectService {
 
   constructor(private http: HttpClient) { }
 
-  create(project: Projects): Observable<Projects> {
-    return this.http.post<Projects>(`${this.apiUrl}`, project);
+  create(project: Project): Observable<Project> {
+    return this.http.post<Project>(`${this.apiUrl}`, project);
   }
 
-  update(_id: string, project: Projects): Observable<Projects> {
-    return this.http.patch<Projects>(`${this.apiUrl}/${_id}`, project);
+  update(_id: string, project: Project): Observable<Project> {
+    return this.http.patch<Project>(`${this.apiUrl}/${_id}`, project);
   }
 
-  findOne(_id: string): Observable<Projects> {
-    return this.http.get<Projects>(`${this.apiUrl}/${_id}`);
+  findOne(_id: string): Observable<Project> {
+    return this.http.get<Project>(`${this.apiUrl}/${_id}`);
   }
 
-  findAll(filter: string = "", page: number = 0, maxElements: number = 5): Observable<Projects> {
+  findAll(filter: string = "", page: number = 0, maxElements: number = 5): Observable<PaginatedResponse<Project>> {
     filter = encodeURI(filter);
-    return this.http.get<Projects>(`${this.apiUrl}?page=${page}&limit=${maxElements}&keyword=${filter}`);
+    return this.http.get<PaginatedResponse<Project>>(`${this.apiUrl}?page=${page}&limit=${maxElements}&keyword=${filter}`);
   }
 }
