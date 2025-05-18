@@ -29,16 +29,16 @@ import { LoadingComponent } from '../../../shared/components/loading/loading.com
         [maxPages]="totalPages"
         [initialPage]="page"
         (pageChange)="onPageChange($event)"></app-pagination>
-        <floating-button></floating-button>
       </div>
     }
+    <floating-button></floating-button>
   `
 })
 export class ProjectListPage implements OnInit{
   filter: string = "";
   totalPages: number = 0;
   page: number = 1;
-  elementsPerPage: number = 1;
+  elementsPerPage: number = 5;
   projects: Project[] | null = null;
 
   constructor(private service: ProjectService, private router: Router) { }
@@ -61,7 +61,6 @@ export class ProjectListPage implements OnInit{
   }
 
   onPageChange(newPage: number): void {
-    console.log("cambiando pagina, a pag. ", newPage);
     this.page = newPage;
     this.fetchData();
   }
