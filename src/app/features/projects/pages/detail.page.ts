@@ -15,57 +15,61 @@ import { Member } from '../model/create-project.model';
   selector: 'app-project-detail-page',
   imports: [CommonModule, ProjectDetailsComponent, FloatingButtonComponent, LoadingComponent],
   template: `
-    @if(project) {
-      <app-project-details [project]=project [isOwner]=isOwner></app-project-details>
+    @if (project) {
+      <app-project-details [project]="project" [isOwner]="isOwner" />
+    } @else {
+      <app-loading />
     }
-    @else {
-      <app-loading></app-loading>
-    }
-    <floating-button [route]=destiny></floating-button>
+
+    <floating-button [route]="destiny" />
   `
 })
 export class ProjectDetailPage implements OnInit {
+  private readonly projectService = inject(ProjectService);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+  private readonly storageService = inject(StorageService);
 
-  private projectService: ProjectService = inject(ProjectService);
-  private router: Router = inject(Router);
-  private route: ActivatedRoute = inject(ActivatedRoute);
-  storageService: StorageService = inject(StorageService);
+  project: Project | null = null;
+  isOwner = false;
+  destiny: string[] = ['/projects/create'];
 
-  isOwner: boolean = false;
+  private _id = '';
 
-  ngOnInit() {
-    this._id = this.route.snapshot.paramMap.get('_id') || '';
+  ngOnInit(): void {
+    this._id = this.route.snapshot.paramMap.get('_id') ?? '';
 
     if (!this._id) {
       this.router.navigate(['/projects']);
       return;
     }
-    this.find();
+
+    this.loadProject();
   }
 
-  _id: string = '';
-  destiny: string | string[] = ['/projects/create'];
+  private loadProject(): void {
+    this.projectService.findOne(this._id).subscribe({
+      next: (project) => {
+        if (!project) {
+          this.router.navigate(['/projects']);
+          return;
+        }
 
-  project: Project | null = null;
-
-  find() {
-    this.projectService.findOne(this._id).subscribe((res: Project) => {
-      if (!res) {
+        this.project = project;
+        this.checkOwnership();
+      },
+      error: () => {
         this.router.navigate(['/projects']);
-        return;
       }
-      this.project = res;
-      this.refreshIsOwner();
     });
   }
 
-  refreshIsOwner() {
+  private checkOwnership(): void {
     const user = this.storageService.getSession();
-    const owner = this.project?.owner;
-    const members = this.project?.members;
-    if (owner?.email === user?.email || members?.some((member: Member) => member.email === user?.email)) {
-      this.isOwner = true;
-    }
+    const ownerEmail = this.project?.owner?.email;
+    const memberEmails = this.project?.members?.map(m => m.email) || [];
 
+    this.isOwner = [ownerEmail, ...memberEmails].includes(user?.email);
   }
 }
+
