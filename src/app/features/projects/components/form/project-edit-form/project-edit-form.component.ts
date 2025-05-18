@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { Projects } from '../../../model/project.model';
+import { Project } from '../../../model/project.model';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -10,8 +10,8 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   styleUrls: ['./project-edit-form.component.css', '../../../../../shared/styles/form.css']
 })
 export class ProjectEditFormComponent implements OnChanges {
-  @Input() project!: Projects;
-  @Output() updated = new EventEmitter<Projects>();
+  @Input() project!: Project;
+  @Output() updated = new EventEmitter<Project>();
 
   private fb = inject(FormBuilder);
 

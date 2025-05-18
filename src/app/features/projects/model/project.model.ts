@@ -2,7 +2,8 @@ import { Member } from "./create-project.model";
 import { FileModel } from "./file.model";
 import { simpleResearchGroup } from "./simple-researchGroup.model";
 
-export interface Projects{
+export interface Project{
+  _id: string;
   code: string;
   image?: FileModel;
   name: string;

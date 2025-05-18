@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Projects } from '../../../model/project.model';
+import { Project } from '../../../model/project.model';
 import { CommonModule } from '@angular/common';
 import { EvidenceCardComponent } from '../evidence-card/evidence-card.component';
 
@@ -12,5 +12,5 @@ import { EvidenceCardComponent } from '../evidence-card/evidence-card.component'
 })
 export class ProjectDetailsComponent {
 
-  @Input() project: Projects | null = null;
+  @Input() project: Project | null = null;
 }
