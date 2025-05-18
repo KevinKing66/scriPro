@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { FloatingButtonComponent } from '../../../shared/components/floating-but
 import { ResearchGroupsService } from '../../../core/service/research-groups.service';
 import { StorageService } from '../../../core/service/storage.service';
 import { ResearchGroup } from '../../research-group/models/research-group.model';
+import { Member } from '../model/create-project.model';
 
 @Component({
   standalone: true,
@@ -26,12 +27,12 @@ import { ResearchGroup } from '../../research-group/models/research-group.model'
   `
 })
 export class ProjectCreatePage implements OnInit {
-  constructor(private service: ProjectService, private researchGroupsService: ResearchGroupsService, private storageService: StorageService, private router: Router) { }
 
-  owner = {
-    "email": "kevin.caicedo.d@uniautonoma.edu",
-    "name": "Kevin Caicedo"
-  };
+  service: ProjectService = inject(ProjectService);
+  researchGroupsService: ResearchGroupsService = inject(ResearchGroupsService);
+  storageService: StorageService = inject(StorageService);
+  router: Router = inject(Router);
+
   state: "FREE" | "LOADING" | "ERROR" | "SUCCESS" = "FREE";
   errorMsg: string = "";
 
@@ -39,6 +40,8 @@ export class ProjectCreatePage implements OnInit {
   destiny: string | string[] = ['/projects'];
 
   researchGroups: ResearchGroup[] = [];
+
+  owner: Member = this.storageService.getUserEmailAndName();
 
   ngOnInit() {
     this.loadResearchGroups();
