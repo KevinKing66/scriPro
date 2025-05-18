@@ -3,8 +3,9 @@ import { simpleResearchGroup } from "./simple-researchGroup.model";
 
 export interface CreateProject {
   code: string;
-  image?: CreateFileDTO;
+  onwer: Member;
   name: string;
+  image?: CreateFileDTO;
   type?: string;
   evidences: CreateEvidence[];
   description: string;
@@ -12,7 +13,6 @@ export interface CreateProject {
   status: 'ACTIVE' | 'COMPLETED' | 'PAUSED';
   members: Member[];
   researchGroup: simpleResearchGroup[];
-  adminId: Member;
 }
 
 export interface CreateEvidence {

@@ -21,20 +21,16 @@ export class ProjectCreateFormComponent implements OnInit {
 
   @Input() researchGroups: ResearchGroup[] = [];
 
+  @Input() onwer!: { email: string, name: string};
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    const defaultGroup = this.researchGroups.length > 0 ? this.researchGroups[0] : null;
-
-    const onwer = {
-      "email": "kevin.caicedo.d@uniautonoma.edu",
-      "name": "Kevin Caicedo"
-    };
 
     this.projectForm = this.fb.group({
       code: ['', [Validators.required]],
       name: ['', [Validators.required]],
-      adminId: [onwer, [Validators.required]],
+      owner: [this.onwer, [Validators.required]],
       description: ['', [Validators.required]],
       creationDateTime: [new Date()],
       status: ['ACTIVE', [Validators.required]],
@@ -105,7 +101,7 @@ export class ProjectCreateFormComponent implements OnInit {
       type: mimeType,
     });
   }
-  
+
   getMimeTypeFromBase64(base64: string): string {
     const mimeType = base64.split(';')[0].split(':')[1];
     return mimeType;
