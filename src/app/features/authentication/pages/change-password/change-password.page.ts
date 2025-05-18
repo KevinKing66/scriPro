@@ -19,7 +19,7 @@ export class ChangePasswordPage implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
   ngOnInit(): void {
-    this.email = this.authService.getEmail() || '';
+    this.email = this.authService.getEmail();
     if (!this.email) {
       this.router.navigate(['/authentication/login']);
       return;
