@@ -15,9 +15,9 @@ export class StorageService {
     localStorage.setItem(this.sessionKey, JSON.stringify(data));
   }
 
-  getSession(): any | null {
+  getSession(): User | null {
     const session = localStorage.getItem(this.sessionKey);
-    return session ? JSON.parse(session) : null;
+    return session ? JSON.parse(session) as User: null;
   }
 
   clearSession(): void {
