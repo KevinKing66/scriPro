@@ -16,7 +16,11 @@ import { ResearchGroup } from '../../research-group/models/research-group.model'
   imports: [CommonModule, ProjectCreateFormComponent, FloatingButtonComponent],
   template: `
     <div class="d-flex">
-      <app-project-create-form [state]="state" [errorMsg]="errorMsg"  [researchGroups]="researchGroups" (formSubmit)="handleSubmit($event)"/>
+      <app-project-create-form
+      [owner]="owner"
+      [state]="state" [errorMsg]="errorMsg"
+      [researchGroups]="researchGroups"
+      (formSubmit)="handleSubmit($event)"/>
       <floating-button [route]=destiny content="<"></floating-button>
     </div>
   `
@@ -24,6 +28,10 @@ import { ResearchGroup } from '../../research-group/models/research-group.model'
 export class ProjectCreatePage implements OnInit {
   constructor(private service: ProjectService, private researchGroupsService: ResearchGroupsService, private storageService: StorageService, private router: Router) { }
 
+  owner = {
+    "email": "kevin.caicedo.d@uniautonoma.edu",
+    "name": "Kevin Caicedo"
+  };
   state: "FREE" | "LOADING" | "ERROR" | "SUCCESS" = "FREE";
   errorMsg: string = "";
 

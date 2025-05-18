@@ -21,7 +21,7 @@ export class ProjectCreateFormComponent implements OnInit {
 
   @Input() researchGroups: ResearchGroup[] = [];
 
-  @Input() onwer!: { email: string, name: string};
+  @Input() owner!: { email: string, name: string};
 
   constructor(private fb: FormBuilder) { }
 
@@ -30,7 +30,7 @@ export class ProjectCreateFormComponent implements OnInit {
     this.projectForm = this.fb.group({
       code: ['', [Validators.required]],
       name: ['', [Validators.required]],
-      owner: [this.onwer, [Validators.required]],
+      owner: [this.owner, [Validators.required]],
       description: ['', [Validators.required]],
       creationDateTime: [new Date()],
       status: ['ACTIVE', [Validators.required]],
