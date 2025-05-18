@@ -17,8 +17,8 @@ export const routes: Routes = [
     path: 'projects', component: MainLayoutComponent, children: [
       { path: '', component: ProjectListPage },
       { path: 'create', component: ProjectCreatePage },
-      { path: 'edit/:uuid', component: ProjectEditPage },
-      { path: ':uuid', component: ProjectDetailPage },
+      { path: 'edit/:_id', component: ProjectEditPage },
+      { path: ':_id', component: ProjectDetailPage },
     ]
   },
   {
