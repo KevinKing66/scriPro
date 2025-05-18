@@ -12,7 +12,11 @@
     <input type="text" class="search-bar" placeholder="Buscar usuario">
 
     <app-user-list [users]="users"></app-user-list>
-    <app-pagination [maxPages]="maxPages"></app-pagination>
+    <app-pagination
+      [maxPages]="totalPages"
+      [initialPage]="page"
+      (pageChange)="onPageChange($event)"
+      ></app-pagination>
   </div>
 }
 

@@ -6,6 +6,7 @@ import { FloatingButtonComponent } from '../../../../shared/components/floating-
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 import { UserService } from '../../service/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PaginatedResponse } from '../../../../core/models/pagineted-response.model';
 
 @Component({
   selector: 'app-user-list-page',
@@ -14,24 +15,35 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './user-list.page.css'
 })
 export class UserListPage implements OnInit {
-  maxPages: number = 0;
+  filter: string = "";
+  totalPages: number = 0;
   page: number = 1;
+  elementsPerPage: number = 1;
   destiny: string | string[] = ['create'];
   users: User[] | null = null;
-  filter: string = "";
 
   constructor(private service: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.service.find().subscribe({
-      next: (data: User[]) => {
-        this.users = data;
-        this.maxPages = Math.ceil(this.users.length / 10); // Assuming 10 users per page
-      },
-      error: (err: any) => {
-        console.error(err);
-      }
-    });
+    this.fetchData();
+  }
+
+    fetchData() {
+      this.service.findAll(this.filter, this.page, this.elementsPerPage)
+      .subscribe({
+          next: (data: PaginatedResponse<User>) => {
+            this.users = data.data;
+            this.totalPages = data.totalPages;
+          },
+          error: (err: any) => {
+            console.error(err);
+          }
+        });
+    }
+
+  onPageChange(newPage: number): void {
+    this.page = newPage;
+    this.fetchData();
   }
 
 }
