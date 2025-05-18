@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { ProjectService } from '../service/project.service';
-import { Projects } from '../model/project.model';
+import { Project } from '../model/project.model';
 import { ProjectCreateFormComponent } from '../components/form/project-create-form/project-create-form.component';
 import { FloatingButtonComponent } from '../../../shared/components/floating-button/floating-button.component';
 import { ResearchGroupsService } from '../../../core/service/research-groups.service';
@@ -27,7 +27,7 @@ export class ProjectCreatePage implements OnInit {
   state: "FREE" | "LOADING" | "ERROR" | "SUCCESS" = "FREE";
   errorMsg: string = "";
 
-  @Output() submitted = new EventEmitter<Projects>();
+  @Output() submitted = new EventEmitter<Project>();
   destiny: string | string[] = ['/projects'];
 
   researchGroups: ResearchGroup[] = [];
@@ -36,7 +36,7 @@ export class ProjectCreatePage implements OnInit {
     this.loadResearchGroups();
   }
 
-  handleSubmit(project: Projects) {
+  handleSubmit(project: Project) {
     this.service.create(project).subscribe({
       next: () => {
         this.errorMsg = "";

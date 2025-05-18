@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Projects } from '../model/project.model';
+import { Project } from '../model/project.model';
 import { ProjectService } from '../service/project.service';
 import { ProjectEditFormComponent } from '../components/form/project-edit-form/project-edit-form.component';
 
@@ -26,7 +26,7 @@ import { ProjectEditFormComponent } from '../components/form/project-edit-form/p
   `
 })
 export class ProjectEditPage implements OnInit {
-  project!: Projects;
+  project!: Project;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,16 +34,16 @@ export class ProjectEditPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const code: string | null = this.route.snapshot.paramMap.get('uuid');
-    if(code) {
-      this.projectService.findOne(code).subscribe((data) => {
+    const _id: string | null = this.route.snapshot.paramMap.get('_id');
+    if(_id) {
+      this.projectService.findOne(_id).subscribe((data) => {
         this.project = data;
       });
     }
   }
 
-  onUpdate(updatedProject: Projects): void {
-    this.projectService.update(this.project.code!, updatedProject).subscribe(() => {
+  onUpdate(updatedProject: Project): void {
+    this.projectService.update(this.project._id, updatedProject).subscribe(() => {
       // redirige o muestra feedback
       alert('Proyecto actualizado con éxito.');
     });
