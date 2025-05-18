@@ -98,7 +98,17 @@ export class ProjectCreateFormComponent implements OnInit {
     if (!file) return;
 
     const base64 = await this.convertToBase64(file);
-    this.evidences.at(index).patchValue({ content: base64 });
+    const mimeType = this.getMimeTypeFromBase64(base64);
+
+    this.evidences.at(index).patchValue({
+      content: base64,
+      type: mimeType,
+    });
+  }
+  
+  getMimeTypeFromBase64(base64: string): string {
+    const mimeType = base64.split(';')[0].split(':')[1];
+    return mimeType;
   }
 
   convertToBase64(file: File): Promise<string> {
