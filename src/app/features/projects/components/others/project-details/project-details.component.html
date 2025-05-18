@@ -1,7 +1,7 @@
 <div class="content">
   <div class="card-detail">
     <div class="card-detail-img center">
-        <img [src]="project?.image?.url" alt="" srcset="img/proyecto.png">
+        <img [src]="project?.image?.url || 'img/proyecto.png'" alt="">
     </div>
 
 
@@ -11,11 +11,16 @@
         <p>{{ project?.description }}</p>
       </div>
 
+
+      <!-- <div class="description">
+        <p><b>Propietario:</b> {{ project?.adminId?.name? }}</p>
+      </div> -->
+
       <div class="members">
         <h2>Miembros:</h2>
         @for(member of project?.members; track member){
           <div class="card-member">
-              <h3>{{ member.name }}</h3>
+              <h3>{{ member.name }}: {{ member.email }}</h3>
           </div>
         }
       </div>
