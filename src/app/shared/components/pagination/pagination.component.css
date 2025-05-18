@@ -4,13 +4,7 @@
     align-items: center;
     margin: 1rem;
 }
-.pagination{
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    font-size: 1.2rem;
-    color: var(--font-color);
-}
+
 svg{
   height: 1rem;
   cursor: pointer;
@@ -20,12 +14,46 @@ svg{
 svg:hover{
   height: 1.4rem;
 }
-.number-page, .pagination-options{
-    min-width: 2rem;
-    text-align: center;
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }
 
-.number-page:hover{
-  font-size: 1.5rem;
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.number-page, .pagination-options {
   cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.number-page:hover, .pagination-options:hover {
+  background-color: #f0f0f0;
+}
+
+.number-page.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border-color: #007bff;
+}
+
+.number-page.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+button {
+  border-radius: 100%;
+  background-color:  transparent;
+  color: var(--font-color)
 }
