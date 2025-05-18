@@ -112,7 +112,7 @@ export class ProjectCreateFormComponent implements OnInit {
 
   submitForm(): void {
     if (this.projectForm.invalid) {
-      console.warn('Formulario inválido');
+      this.projectForm.markAllAsTouched();
       return;
     }
 
@@ -121,7 +121,7 @@ export class ProjectCreateFormComponent implements OnInit {
       evidence.patchValue({ participants });
     });
 
-    console.log('Proyecto creado:', this.projectForm.value);
     this.formSubmit.emit(this.projectForm.value);
+    this.projectForm.reset();
   }
 }
