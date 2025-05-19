@@ -13,10 +13,11 @@ import { ChangePasswordPage } from './features/authentication/pages/change-passw
 import { ForgotPasswordPage } from './features/authentication/pages/forgot-password/forgot-password.page';
 import { ResearchGroupListPageComponent } from './features/research-group/page/research-group-list-page/research-group-list-page.component';
 import { ResearchGroupCreateEditPageComponent } from './features/research-group/page/research-group-create-edit-page/research-group-create-edit-page.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
-    path: 'projects', component: MainLayoutComponent, children: [
+    path: 'projects', component: MainLayoutComponent, canActivate: [authGuard], children: [
       { path: '', component: ProjectListPage },
       { path: 'create', component: ProjectCreatePage },
       { path: 'edit/:_id', component: ProjectEditPage },
@@ -24,7 +25,7 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'research-group', component: MainLayoutComponent, children: [
+    path: 'research-group', component: MainLayoutComponent, canActivate: [authGuard], children: [
       { path: '', component: ResearchGroupListPageComponent },
       { path: 'create', component: ResearchGroupCreateEditPageComponent },
       { path: 'edit/:_id', component: ResearchGroupCreateEditPageComponent },
@@ -32,7 +33,7 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'users', component: MainLayoutComponent, children: [
+    path: 'users', component: MainLayoutComponent, canActivate: [authGuard], children: [
       { path: '', component: UserListPage },
       { path: 'create', component: RegisterPage },
       { path: 'profile', component: UserProfilePage },
@@ -41,7 +42,7 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'authentication', component: MainLayoutComponent, children: [
+    path: 'authentication', canActivate: [authGuard], component: MainLayoutComponent, children: [
       { path: 'register', component: RegisterPage },
       { path: 'change-password', component: ChangePasswordPage },
     ]
@@ -52,6 +53,6 @@ export const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginPage },
-  { pathMatch : 'prefix', path: '', redirectTo: 'projects' },
+  {path: '**', redirectTo: 'projects' },
   //
 ];
