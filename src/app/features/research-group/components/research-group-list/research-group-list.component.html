@@ -1,0 +1,22 @@
+<div class="list-container center column">
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Facultad</th>
+        <!-- <th>Admin</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      @for(researchGroup of researchGroups; track researchGroup._id) {
+        <tr [routerLink]="['/research-group', researchGroup._id]">
+          <td>{{ researchGroup.code }}</td>
+          <td>{{ researchGroup.name }}</td>
+          <td>{{ researchGroup.faculty }} </td>
+          <!-- <td>{{ researchGroup.admin?.email}}</td> -->
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

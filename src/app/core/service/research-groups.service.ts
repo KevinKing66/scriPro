@@ -4,6 +4,7 @@ import { environment } from '../../../enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { ResearchGroup } from '../../features/research-group/models/research-group.model';
+import { PaginatedResponse } from '../models/pagineted-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,11 @@ export class ResearchGroupsService {
     return this.http.get<ResearchGroup[]>(`${this.apiUrl}`);
   }
 
-  find(code: string): Observable<ResearchGroup> {
+  findAllWithPagination(filter: string = "", page: number = 1, maxElements: number = 5): Observable<PaginatedResponse<ResearchGroup>> {
+    return this.http.get<PaginatedResponse<ResearchGroup>>(`${this.apiUrl}/paginated?page=${page}&limit=${maxElements}&keyword=${filter}`);
+  }
+
+  findOne(code: string): Observable<ResearchGroup> {
     return this.http.get<ResearchGroup>(`${this.apiUrl}/${code}`);
   }
   create(researchGroup: ResearchGroup): Observable<ResearchGroup> {

@@ -11,6 +11,8 @@ import { UserDetailPage } from './features/users/pages/user-detail/user-detail.p
 import { UserProfilePage } from './features/users/pages/user-profile/user-profile.page';
 import { ChangePasswordPage } from './features/authentication/pages/change-password/change-password.page';
 import { ForgotPasswordPage } from './features/authentication/pages/forgot-password/forgot-password.page';
+import { ResearchGroupListPageComponent } from './features/research-group/page/research-group-list-page/research-group-list-page.component';
+import { ResearchGroupCreateEditPageComponent } from './features/research-group/page/research-group-create-edit-page/research-group-create-edit-page.component';
 
 export const routes: Routes = [
   {
@@ -19,6 +21,14 @@ export const routes: Routes = [
       { path: 'create', component: ProjectCreatePage },
       { path: 'edit/:_id', component: ProjectEditPage },
       { path: ':_id', component: ProjectDetailPage },
+    ]
+  },
+  {
+    path: 'research-group', component: MainLayoutComponent, children: [
+      { path: '', component: ResearchGroupListPageComponent },
+      { path: 'create', component: ResearchGroupCreateEditPageComponent },
+      { path: 'edit/:_id', component: ResearchGroupCreateEditPageComponent },
+      // { path: ':_id', component: ProjectDetailPage },
     ]
   },
   {

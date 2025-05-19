@@ -1,0 +1,17 @@
+<div class="column">
+  <h1 class="text-xl font-bold mb-4">
+    {{ isEditMode ? 'Editar Semillero' : 'Crear Semillero' }}
+  </h1>
+
+  <div *ngIf="errorMessage" class="text-red-600 bg-red-100 p-3 rounded mb-4">
+    {{ errorMessage }}
+  </div>
+
+  <app-research-group-form
+    [initialData]="group"
+    (formSubmitted)="onSubmit($event)"
+  />
+
+
+  <floating-button [route]="['/']" content="<"></floating-button>
+</div>

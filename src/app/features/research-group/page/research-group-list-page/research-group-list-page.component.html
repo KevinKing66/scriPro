@@ -1,0 +1,22 @@
+@if(researchGroups == null) {
+  <app-loading></app-loading>
+} @else if (researchGroups.length == 0) {
+  <div class="column">
+    <h1>No se encontraron semilleros</h1>
+  </div>
+} @else {
+  <div class="d-flex center column">
+
+    <h2>Listado de semilleros</h2>
+
+    <input type="text" class="search-bar" placeholder="Buscar semillero" [(ngModel)]="filter" (keyup.enter)="onSearch()"/>
+    <app-research-group-list [researchGroups]="researchGroups"></app-research-group-list>
+    <app-pagination
+      [maxPages]="totalPages"
+      [initialPage]="page"
+      (pageChange)="onPageChange($event)"
+      ></app-pagination>
+  </div>
+}
+
+<floating-button [route]=destiny></floating-button>

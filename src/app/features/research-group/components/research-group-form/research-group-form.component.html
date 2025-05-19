@@ -1,0 +1,71 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4 p-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <label class="block text-sm font-medium">Código *</label>
+      <input formControlName="code" class="input" type="text" />
+      <div class="text-red-500 text-sm" *ngIf="hasError('code')">
+        El código es obligatorio.
+      </div>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium">Nombre *</label>
+      <input formControlName="name" class="input" type="text" />
+      <div class="text-red-500 text-sm" *ngIf="hasError('name')">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="md:col-span-2">
+      <label class="block text-sm font-medium">Descripción *</label>
+      <textarea formControlName="description" class="input"></textarea>
+      <div class="text-red-500 text-sm" *ngIf="hasError('description')">
+        La descripción es obligatoria.
+      </div>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium">Facultad</label>
+      <input formControlName="faculty" class="input" type="text" />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium">Email de contacto</label>
+      <input formControlName="contactEmail" class="input" type="email" />
+      <div class="text-red-500 text-sm" *ngIf="hasError('contactEmail')">
+        Debe ser un email válido.
+      </div>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium">Estado *</label>
+      <select formControlName="status" class="input">
+        <option value="ACTIVE">Activo</option>
+        <option value="DESACTIVE">Desactivado</option>
+      </select>
+      <div class="text-red-500 text-sm" *ngIf="hasError('status')">
+        El estado es obligatorio.
+      </div>
+    </div>
+
+    <div class="md:col-span-2">
+      <label class="block text-sm font-medium">Administrador (opcional)</label>
+      <div class="grid grid-cols-2 gap-2">
+        <input
+          formControlName="name"
+          formGroupName="admin"
+          placeholder="Nombre"
+          class="input"
+        />
+        <input
+          formControlName="email"
+          formGroupName="admin"
+          placeholder="Email"
+          class="input"
+        />
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-4">Guardar</button>
+</form>
