@@ -56,6 +56,7 @@ export class AuthService {
 
   logout(): void {
     this.cookieService.delete('auth_token');
+    this.cookieService.deleteAll();
     this.storageService.clearSession();
   }
 
