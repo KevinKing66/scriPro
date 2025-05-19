@@ -56,24 +56,23 @@ export class ProjectEditPage implements OnInit {
   }
 
   onUpdate(updatedProject: UpdateProject): void {
-    console.log("Updated project: ", updatedProject);
-    // this.projectService.update(this.project._id, updatedProject).subscribe({
-    //   next: () => {
-    //     this.errorMsg = "";
-    //     this.state = "SUCCESS";
-    //     setTimeout(() => {
-    //       this.state = "FREE";
-    //     }, 8000);
-    //   },
-    //   error: err => {
-    //     console.log("Error: ", err);
-    //     this.state = "ERROR";
-    //     setTimeout(() => {
-    //       this.state = "FREE";
-    //     }, 15000);
-    //     this.errorMsg = err.error.message || err.error || err.message || err;
-    //   },
-    // });
+    this.projectService.update(this.project._id, updatedProject).subscribe({
+      next: () => {
+        this.errorMsg = "";
+        this.state = "SUCCESS";
+        setTimeout(() => {
+          this.state = "FREE";
+        }, 8000);
+      },
+      error: err => {
+        console.log("Error: ", err);
+        this.state = "ERROR";
+        setTimeout(() => {
+          this.state = "FREE";
+        }, 15000);
+        this.errorMsg = err.error.message || err.error || err.message || err;
+      },
+    });
   }
 
 

@@ -150,7 +150,7 @@ export class ProjectEditFormComponent implements OnInit, OnChanges {
     }
 
     // Para imagen, si cambió contenido
-    if (formValue.image?.content !== this.project.image?.content) {
+    if (formValue.image?.content !== "") {
       updatedData.image = formValue.image;
     }
 
