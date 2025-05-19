@@ -5,6 +5,7 @@ import { ResearchGroup } from '../../models/research-group.model';
 import { FloatingButtonComponent } from '../../../../shared/components/floating-button/floating-button.component';
 import { CommonModule } from '@angular/common';
 import { ResearchGroupFormComponent } from '../../components/research-group-form/research-group-form.component';
+import { StorageService } from '../../../../core/service/storage.service';
 
 @Component({
   selector: 'app-research-group-create-edit-page',
@@ -19,7 +20,10 @@ export class ResearchGroupCreateEditPageComponent implements OnInit {
 
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly groupService: ResearchGroupsService = inject(ResearchGroupsService);
+  private readonly storageService: StorageService = inject(StorageService);
   private readonly router: Router = inject(Router);
+
+  owner = this.storageService.getUserEmailAndName();
 
   ngOnInit(): void {
     const _id = this.route.snapshot.paramMap.get('_id');

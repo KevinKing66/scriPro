@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Member } from '../../../projects/model/create-project.model';
 
 @Component({
   selector: 'app-research-group-form',
@@ -10,6 +11,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class ResearchGroupFormComponent implements OnInit {
   @Input() initialData?: any;
+  @Input() owner: Member = {name: '', email: ''};
   @Output() formSubmitted = new EventEmitter<any>();
 
 
@@ -24,12 +26,12 @@ export class ResearchGroupFormComponent implements OnInit {
       name: [this.initialData?.name || '', Validators.required],
       description: [this.initialData?.description || '', Validators.required],
       admin: this.fb.group({
-        name: [this.initialData?.admin?.name || ''],
-        email: [this.initialData?.admin?.email || ''],
+        name: [this.owner.name],
+        email: [this.owner.email],
       }),
       faculty: [this.initialData?.faculty || ''],
-      contactEmail: [this.initialData?.contactEmail || '', Validators.email],
-      status: [this.initialData?.status || 'ACTIVE', Validators.required],
+      // contactEmail: [this.initialData?.contactEmail || '', Validators.email],
+      // status: [this.initialData?.status || 'ACTIVE', Validators.required],
     });
   }
 
