@@ -42,7 +42,8 @@ body.nigth-mode, app-root.nigth-mode{
 }
 svg{
   fill: currentColor;
-  color: var(--font-color);
+  color: white;
+  min-width: 1.5rem;
 }
 app-root{
   display: flex;
