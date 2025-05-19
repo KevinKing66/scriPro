@@ -4,6 +4,7 @@ import { environment } from '../../../../enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PaginatedResponse } from '../../../core/models/pagineted-response.model';
+import { UpdateProject } from '../model/update-project.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class ProjectService {
     return this.http.post<Project>(`${this.apiUrl}`, project);
   }
 
-  update(_id: string, project: Project): Observable<Project> {
+  update(_id: string, project: UpdateProject): Observable<Project> {
     return this.http.patch<Project>(`${this.apiUrl}/${_id}`, project);
   }
 

@@ -235,3 +235,9 @@ button:enabled{
     color: var(--second-color-nigth-mode);
     border-radius: 30px;
 }
+
+.form{
+    display: flex;
+    flex-direction: column;
+    color: var(--font-color);
+}
