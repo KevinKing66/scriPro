@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -10,6 +10,7 @@ import { ProjectService } from '../service/project.service';
 import { Project } from '../model/project.model';
 import { PaginatedResponse } from '../../../core/models/pagineted-response.model';
 import { LoadingComponent } from '../../../shared/components/loading/loading.component';
+import { FilterService } from '../../../core/service/filter.service';
 
 @Component({
   standalone: true,
@@ -35,16 +36,19 @@ import { LoadingComponent } from '../../../shared/components/loading/loading.com
   `
 })
 export class ProjectListPage implements OnInit{
+  private service: ProjectService = inject(ProjectService);
+  private filterService: FilterService = inject(FilterService);
   filter: string = "";
   totalPages: number = 0;
   page: number = 1;
   elementsPerPage: number = 5;
   projects: Project[] | null = null;
 
-  constructor(private service: ProjectService, private router: Router) { }
-
   ngOnInit(): void {
-    this.fetchData();
+    this.filterService.filter$.subscribe(value => {
+      this.filter = value;
+      this.fetchData();
+    });
   }
 
   fetchData() {

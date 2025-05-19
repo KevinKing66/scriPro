@@ -4,7 +4,14 @@
 
     <div class="header-menu">
 
-        <input type="text" class="search-bar" placeholder="Buscar Proyecto">
+        <input
+          type="text"
+          class="search-bar"
+          placeholder="Buscar Proyecto"
+          [value]="filterService.currentFilter"
+          (input)="onInput($event)"
+          (focus)="redirectIfNotInProjects()"
+        >
 
         <user-dropdown></user-dropdown>
 
