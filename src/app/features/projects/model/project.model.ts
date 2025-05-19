@@ -1,6 +1,7 @@
 import { Member } from "./create-project.model";
 import { FileModel } from "./file.model";
 import { simpleResearchGroup } from "./simple-researchGroup.model";
+import { Participant } from '../../../../../../../backend/scri-pro/dist/evidences/entities/evidence.entity';
 
 export interface Project{
   _id: string;
@@ -18,11 +19,11 @@ export interface Project{
 }
 
 export interface Evidences {
-  uuid: string;
-  projectUuid: string;
+  key?: string;
   url: string;
   creationDateTime: Date;
   description: string;
-  fileName: string;
+  content: string;
   type: string;
+  participants?: Participant[];
 }

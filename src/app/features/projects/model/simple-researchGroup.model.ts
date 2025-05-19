@@ -1,4 +1,4 @@
 export interface simpleResearchGroup{
-  email: string;
+  code: string;
   name: string
 }

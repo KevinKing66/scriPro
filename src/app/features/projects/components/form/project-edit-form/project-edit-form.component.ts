@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ResearchGroup } from '../../../../research-group/models/research-group.model';
+import { simpleResearchGroup } from '../../../model/simple-researchGroup.model';
+import { Project } from '../../../model/project.model';
 
 @Component({
   selector: 'app-project-edit-form',
@@ -12,8 +13,8 @@ import { ResearchGroup } from '../../../../research-group/models/research-group.
 })
 export class ProjectEditFormComponent implements OnInit, OnChanges {
 
-  @Input() project: any; // El proyecto a editar
-  @Input() researchGroups: ResearchGroup[] = [];
+  @Input() project!: Project;
+  @Input() researchGroups: simpleResearchGroup[] = [];
   @Input() state: 'FREE' | 'LOADING' | 'ERROR' | 'SUCCESS' = 'FREE';
   @Input() errorMsg: string = '';
 

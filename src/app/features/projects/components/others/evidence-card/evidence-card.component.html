@@ -19,8 +19,13 @@
   </div>
 
   <div class="file-info">
-    <strong>{{ evidence.fileName }}</strong>
+    <strong>{{ evidence.type }}</strong>
     <p>{{ evidence.description }}</p>
     <p>{{ formatDate(evidence.creationDateTime) }}</p>
+    @for(member of evidence.participants; track member){
+      <div class="card-member">
+          <h6>{{ member.name }}: {{ member.email }}</h6>
+      </div>
+    }
   </div>
 </div>

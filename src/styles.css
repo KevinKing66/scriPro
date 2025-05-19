@@ -241,3 +241,7 @@ button:enabled{
     flex-direction: column;
     color: var(--font-color);
 }
+
+h6{
+  margin: 0;
+}
