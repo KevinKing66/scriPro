@@ -8,13 +8,14 @@ import { ProjectEditFormComponent } from '../components/form/project-edit-form/p
 import { ResearchGroup } from '../../research-group/models/research-group.model';
 import { ResearchGroupsService } from '../../../core/service/research-groups.service';
 import { FloatingButtonComponent } from '../../../shared/components/floating-button/floating-button.component';
+import { UpdateProject } from '../model/update-project.model';
 
 @Component({
   standalone: true,
   selector: 'app-project-edit-page',
   imports: [CommonModule, ProjectEditFormComponent, FloatingButtonComponent],
   template: `
-  <div class="container">
+  <div class="d-flex column">
     <h1>Editar Proyecto</h1>
 
     @if (project) {
@@ -53,7 +54,7 @@ export class ProjectEditPage implements OnInit {
     }
   }
 
-  onUpdate(updatedProject: Project): void {
+  onUpdate(updatedProject: UpdateProject): void {
     this.projectService.update(this.project._id, updatedProject).subscribe({
       next: () => {
         this.errorMsg = "";
@@ -72,7 +73,6 @@ export class ProjectEditPage implements OnInit {
       },
     });
   }
-
 
 
   loadResearchGroups() {

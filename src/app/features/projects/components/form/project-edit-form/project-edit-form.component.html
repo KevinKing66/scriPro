@@ -1,17 +1,33 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="edit-form">
+<p class="title">Edición de Proyecto</p>
+<form [formGroup]="projectForm" (ngSubmit)="submitForm()" class="form">
+
   <div class="form-field">
-    <label>Nombre del Proyecto</label>
-    <input formControlName="name" type="text" />
+    <label for="image">Miniatura del Proyecto</label>
+    <input type="file" id="image" (change)="onImageChange($event)" />
+    <div *ngIf="projectForm.get('image.content')?.value" class="column">
+      <p>Vista previa:</p>
+      <img [src]="projectForm.get('image.content')?.value" alt="Vista previa principal" style="max-width: 200px; max-height: 200px;" />
+    </div>
   </div>
 
   <div class="form-field">
-    <label>Descripción</label>
-    <textarea formControlName="description"></textarea>
+    <label for="code">Código del Proyecto</label>
+    <input id="code" formControlName="code" />
   </div>
 
   <div class="form-field">
-    <label>Estado</label>
-    <select formControlName="status">
+    <label for="name">Nombre del Proyecto</label>
+    <input id="name" formControlName="name" />
+  </div>
+
+  <div class="form-field">
+    <label for="description">Descripción</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+
+  <div class="form-field">
+    <label for="status">Estado</label>
+    <select id="status" formControlName="status">
       <option value="ACTIVE">Activo</option>
       <option value="INACTIVE">Inactivo</option>
       <option value="PAUSED">Pausado</option>
@@ -19,11 +35,55 @@
   </div>
 
   <div class="form-field">
-    <label>Grupo de investigación</label>
-    <input formControlName="researchGroups" type="number" />
+    <label for="researchGroups">Grupos de Investigación</label>
+    <select id="researchGroups" multiple formControlName="researchGroups">
+      <option *ngFor="let group of researchGroups" [ngValue]="group">
+        {{ group.name }}
+      </option>
+    </select>
   </div>
 
-  <div class="form-actions center">
-    <button type="submit" [disabled]="form.invalid">Actualizar</button>
+  <div>
+    <h4>Miembros</h4>
+    <button type="button" (click)="addMember()">Añadir Miembro</button>
+    <div formArrayName="members">
+      <div *ngFor="let member of members.controls; let i = index" [formGroupName]="i" class="form-field">
+        <input placeholder="Nombre" formControlName="name" />
+        <input placeholder="Correo" formControlName="email" />
+        <button type="button" (click)="removeMember(i)">Eliminar Miembro</button>
+      </div>
+    </div>
   </div>
+
+  <div>
+    <h4>Evidencias</h4>
+    <button type="button" (click)="addEvidence()">Añadir Evidencia</button>
+    <div formArrayName="evidences">
+      <div *ngFor="let evidence of evidences.controls; let i = index" [formGroupName]="i" class="evidance-card">
+        <div class="evidance-input-div">
+          <label>Descripción</label>
+          <input formControlName="description" />
+        </div>
+        <div class="evidance-input-div">
+          <label>Archivo</label>
+          <input type="file" (change)="onFileChange($event, i)" />
+        </div>
+
+        <div *ngIf="evidence.get('content')?.value" class="column">
+          <p>Vista previa:</p>
+          <img [src]="evidence.get('content')?.value" alt="Vista previa" style="max-width: 200px; max-height: 200px;" />
+        </div>
+
+        <button type="button" (click)="removeEvidence(i)">Eliminar Evidencia</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-container [ngSwitch]="state">
+    <p *ngSwitchCase="'LOADING'" class="loading">Actualizando proyecto...</p>
+    <p *ngSwitchCase="'ERROR'" class="error">Error: {{ errorMsg }}</p>
+    <p *ngSwitchCase="'SUCCESS'" class="success">Proyecto actualizado con éxito.</p>
+  </ng-container>
+
+  <button type="submit">Guardar Cambios</button>
 </form>
