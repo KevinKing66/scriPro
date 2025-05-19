@@ -1,7 +1,9 @@
 .card{
     background-color: var(--third-color-nigth-mode);
     color: var(--font-color-nigth-mode);
-    max-width: 80%;
+    width: 100rem;
+    max-width: 75vw;
+    height: 20rem;
     margin: 2rem 0px 0.5rem 0px;
     display: flex;
     flex-direction: row;
@@ -10,8 +12,9 @@
 
 .card img{
     max-width: 50%;
-    max-height: 200px;
+    height: 20rem;
     border-radius: 30px 0px 0px 30px;
+    object-fit: cover;
 }
 
 .card-description{
