@@ -22,8 +22,13 @@ export class EvidenceCardComponent {
 
   isDocument(): boolean {
     const docTypes = [
+      // Word
       'application/msword',
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      // OpenDocument (LibreOffice / OpenOffice)
+      'application/vnd.oasis.opendocument.text',
+      'application/vnd.oasis.opendocument.spreadsheet',
+      'application/vnd.oasis.opendocument.presentation',
     ];
     return docTypes.includes(this.evidence.type);
   }
