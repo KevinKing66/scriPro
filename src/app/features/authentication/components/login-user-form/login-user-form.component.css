@@ -4,7 +4,7 @@
     flex-direction: column;
     padding: 1rem;
     margin-top: 5rem;
-    background-color: var(--second-color-nigth-mode);
+    background-color: #02376ce3;
     border-radius: 10px;
     color: white !important
 }
