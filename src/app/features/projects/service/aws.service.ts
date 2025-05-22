@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../../enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { FileModel } from '../model/file.model';
+import { environment } from '../../../../enviroments/enviroment.prod';
 
 @Injectable({
   providedIn: 'root'

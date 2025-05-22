@@ -4,11 +4,11 @@ import { User } from '../../features/authentication/models/user.model';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginDto } from '../../features/authentication/models/login.dto';
-import { environment } from '../../../enviroments/enviroment';
 import { ChangePassword } from '../../features/authentication/models/change-password';
 import { ForgotPassword } from '../../features/authentication/models/forgot-password';
 import { UserWithToken } from '../../features/authentication/models/user-with-token.model';
 import { StorageService } from './storage.service';
+import { environment } from '../../../enviroments/enviroment.prod';
 
 @Injectable({
   providedIn: 'root'
