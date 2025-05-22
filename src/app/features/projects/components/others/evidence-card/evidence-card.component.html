@@ -5,18 +5,17 @@
     </ng-container>
 
     <ng-template #fileIcon>
-      <img
-        *ngIf="isPdf()"
-        src="img/pdf.png"
-        alt="PDF icon"
-      />
-      <img
-        *ngIf="isDocument()"
-        src="img/doc.png"
-        alt="Document icon"
-      />
     </ng-template>
   </div>
+
+  @if(isPdf()){
+    <img src="img/logo_0.png" alt="PDF icon" />
+  }
+
+
+  @if(isDocument()){
+    <img src="/img/doc.png" alt="Document icon" />
+  }
 
   <div class="file-info">
     <strong>{{ evidence.type }}</strong>
