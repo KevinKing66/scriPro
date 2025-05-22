@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../../enviroments/enviroment';
 import { User } from '../../authentication/models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { PaginatedResponse } from '../../../core/models/pagineted-response.model';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../enviroments/enviroment.prod';
 
 @Injectable({
   providedIn: 'root'
