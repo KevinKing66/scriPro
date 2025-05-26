@@ -161,6 +161,12 @@ export class ProjectEditFormComponent implements OnInit, OnChanges {
       updatedData.image = formValue.image;
     }
 
+
+    // Para tipo de proyecto
+    if (formValue.type?.content !== "") {
+      updatedData.type = formValue.type;
+    }
+
     // Para members y evidences, mandamos completos (puedes mejorar validando cambios)
     if (this.members.length > 0) {
       updatedData.members = formValue.members;
