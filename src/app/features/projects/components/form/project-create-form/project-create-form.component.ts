@@ -30,6 +30,7 @@ export class ProjectCreateFormComponent implements OnInit {
     this.projectForm = this.fb.group({
       code: ['', [Validators.required]],
       name: ['', [Validators.required]],
+      type: ['INVESTIGATION', [Validators.required]],
       owner: [this.owner, [Validators.required]],
       description: ['', [Validators.required]],
       creationDateTime: [new Date()],

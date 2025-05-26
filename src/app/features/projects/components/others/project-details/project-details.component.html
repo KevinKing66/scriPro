@@ -11,6 +11,9 @@
         <p>{{ project.description }}</p>
       </div>
 
+      <div class="description">
+        <p><b>Tipo:</b> {{ project.type | projectTypeLabel }}</p>
+      </div>
 
       <div class="description">
         <p><b>Propietario:</b> {{ project.owner.email }}</p>

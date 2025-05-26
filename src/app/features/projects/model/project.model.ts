@@ -8,6 +8,7 @@ export interface Project{
   owner: Member;
   image?: FileModel;
   name: string;
+  type: string;
   evidences: Evidences[];
   description: string;
   creationDateTime: Date;

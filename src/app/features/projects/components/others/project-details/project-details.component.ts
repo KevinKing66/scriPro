@@ -3,11 +3,12 @@ import { Project } from '../../../model/project.model';
 import { CommonModule } from '@angular/common';
 import { EvidenceCardComponent } from '../evidence-card/evidence-card.component';
 import { Router } from '@angular/router';
+import { ProjectTypeLabelPipe } from '../../../../../shared/pipes/project-type-label.pipe';
 
 @Component({
   selector: 'app-project-details',
   standalone: true,
-  imports: [CommonModule, EvidenceCardComponent],
+  imports: [CommonModule, EvidenceCardComponent, ProjectTypeLabelPipe],
   templateUrl: './project-details.component.html',
   styleUrl: './project-details.component.css'
 })

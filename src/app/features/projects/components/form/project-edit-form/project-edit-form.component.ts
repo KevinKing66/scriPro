@@ -38,6 +38,7 @@ export class ProjectEditFormComponent implements OnInit, OnChanges {
     this.projectForm = this.fb.group({
       code: [this.project?.code || '', Validators.required],
       name: [this.project?.name || '', Validators.required],
+      type: [this.project?.type || '', Validators.required],
       description: [this.project?.description || '', Validators.required],
       status: [this.project?.status || 'ACTIVE', Validators.required],
       researchGroups: [this.project?.researchGroups || [], Validators.required],

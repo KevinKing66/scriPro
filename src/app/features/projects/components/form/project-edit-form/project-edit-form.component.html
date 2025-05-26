@@ -42,6 +42,16 @@
     </select>
   </div>
 
+  <div class="form-field">
+    <label for="type">Tipo de proyecto: </label>
+    <select id="type" formControlName="type">
+      <option value="" disabled>No definido</option>
+      <option value="INVESTIGATION">Investigación</option>
+      <option value="INNOVATION">Innovación</option>
+      <option value="ACADEMIC">Académico</option>
+    </select>
+  </div>
+
   <div>
     <h4>Miembros</h4>
     <button type="button" (click)="addMember()">Añadir Miembro</button>
