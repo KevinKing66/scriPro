@@ -78,10 +78,26 @@
           <input type="file" (change)="onFileChange($event, i)" />
         </div>
 
-        <div *ngIf="evidence.get('content')?.value" class="column">
-          <p>Vista previa:</p>
-          <img [src]="evidence.get('content')?.value" alt="Vista previa" style="max-width: 200px; max-height: 200px;" />
-        </div>
+
+        @if(evidence.get('type')?.value && isDocument(evidence.get('type')?.value)){
+          <div class="column">
+            <img src="/img/doc.png" alt="Document icon" style="max-width: 200px; max-height: 200px;" />
+          </div>
+        }@else if(evidence.get('type')?.value && isPdf(evidence.get('type')?.value)){
+          <div class="column">
+            <img src="img/pdf.png" alt="PDF icon" style="max-width: 200px; max-height: 200px;"/>
+          </div>
+        }@else if((evidence.get('content')?.value)){
+          <div class="column">
+            <p>Vista previa:</p>
+            <img [src]="evidence.get('content')?.value" alt="Vista previa" style="max-width: 200px; max-height: 200px;" />
+          </div>
+        }@else if(evidence.get('url')?.value){
+          <div class="column">
+            <p>Vista previa:</p>
+            <img [src]="evidence.get('url')?.value" alt="Vista previa" style="max-width: 200px; max-height: 200px;" />
+          </div>
+        }
 
         <button type="button" (click)="removeEvidence(i)">Eliminar Evidencia</button>
       </div>

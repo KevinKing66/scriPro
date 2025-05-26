@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { simpleResearchGroup } from '../../../model/simple-researchGroup.model';
-import { Project } from '../../../model/project.model';
+import { Evidences, Project } from '../../../model/project.model';
 
 @Component({
   selector: 'app-project-edit-form',
@@ -34,7 +34,17 @@ export class ProjectEditFormComponent implements OnInit, OnChanges {
     }
   }
 
+  evidenceToFormGroup(e: Evidences){
+    return this.fb.group({
+      description: [e?.description || '', Validators.required],
+      key: [e.key || ''],
+      type: [e.type || ''],
+      url: [e?.url || ''],
+    })
+  }
+
   initForm() {
+    const evidences = this.project?.evidences.map(e => this.evidenceToFormGroup(e));
     this.projectForm = this.fb.group({
       code: [this.project?.code || '', Validators.required],
       name: [this.project?.name || '', Validators.required],
@@ -43,20 +53,16 @@ export class ProjectEditFormComponent implements OnInit, OnChanges {
       status: [this.project?.status || 'ACTIVE', Validators.required],
       researchGroups: [this.project?.researchGroups || [], Validators.required],
       image: this.fb.group({
-        content: [this.project?.image?.content || '']
+        content: [this.project?.image?.content || ''],
+        key: [this.project?.image?.key || ''],
       }),
       members: this.fb.array([]),
-      evidences: this.fb.array([])
+      evidences: this.fb.array(evidences)
     });
 
     // Inicializar members
     if (this.project?.members?.length) {
       this.project.members.forEach((m: any) => this.addMember(m));
-    }
-
-    // Inicializar evidences
-    if (this.project?.evidences?.length) {
-      this.project.evidences.forEach((e: any) => this.addEvidence(e));
     }
   }
 
@@ -165,4 +171,26 @@ export class ProjectEditFormComponent implements OnInit, OnChanges {
 
     this.updated.emit(updatedData);
   }
+
+  isImage(type: string): boolean {
+    return type.startsWith('image/');
+  }
+
+  isPdf(type: string): boolean {
+    return type === 'application/pdf';
+  }
+
+  isDocument(type: string): boolean {
+    const docTypes = [
+      // Word
+      'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      // OpenDocument (LibreOffice / OpenOffice)
+      'application/vnd.oasis.opendocument.text',
+      'application/vnd.oasis.opendocument.spreadsheet',
+      'application/vnd.oasis.opendocument.presentation',
+    ];
+    return docTypes.includes(type);
+  }
+
 }
