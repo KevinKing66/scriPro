@@ -1,21 +1,19 @@
 <div class="evidence-card">
   <div class="image-container">
-    <ng-container *ngIf="isImage(); else fileIcon">
+    @if(isImage()){
       <img [src]="evidence.url" alt="evidence image" />
-    </ng-container>
+    }
 
-    <ng-template #fileIcon>
-    </ng-template>
+    @if(isPdf()){
+      <img src="img/pdf.png" alt="PDF icon" />
+    }
+
+
+    @if(isDocument()){
+      <img src="/img/doc.png" alt="Document icon" />
+    }
+
   </div>
-
-  @if(isPdf()){
-    <img src="img/logo_0.png" alt="PDF icon" />
-  }
-
-
-  @if(isDocument()){
-    <img src="/img/doc.png" alt="Document icon" />
-  }
 
   <div class="file-info">
     <strong>{{ evidence.type }}</strong>
