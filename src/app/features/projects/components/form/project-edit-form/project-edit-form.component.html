@@ -70,10 +70,6 @@
     <div formArrayName="evidences">
       <div *ngFor="let evidence of evidences.controls; let i = index" [formGroupName]="i" class="evidance-card">
         <div class="evidance-input-div">
-          <label>Descripción</label>
-          <input formControlName="description" />
-        </div>
-        <div class="evidance-input-div">
           <label>Archivo</label>
           <input type="file" (change)="onFileChange($event, i)" />
         </div>
@@ -98,6 +94,10 @@
             <img [src]="evidence.get('url')?.value" alt="Vista previa" style="max-width: 200px; max-height: 200px;"accept=".pdf,.doc,.docx,image/*,video/*,application/msword,application/vdn.*,application/vdn.zip" />
           </div>
         }
+        <div class="evidance-input-div">
+          <label>Descripción</label>
+          <input formControlName="description" />
+        </div>
 
         <button type="button" (click)="removeEvidence(i)">Eliminar Evidencia</button>
       </div>
