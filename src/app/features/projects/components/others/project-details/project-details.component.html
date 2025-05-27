@@ -6,6 +6,10 @@
 
 
     <div class="card-content">
+      <button (click)="exportToPdf()" class="btn btn-primary">
+        Exportar PDF
+      </button>
+
       <h1 class="card-title">{{ project.name }}</h1>
       <div class="description">
         <p>{{ project.description }}</p>
@@ -41,9 +45,6 @@
           </div>
         }
 
-        <button (click)="exportToPdf()" class="btn btn-primary">
-          Exportar PDF
-        </button>
 
       </div>
 
