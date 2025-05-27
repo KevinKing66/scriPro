@@ -56,7 +56,6 @@ export class ProjectEditFormComponent implements OnInit, OnChanges {
         content: [this.project?.image?.content || ''],
         key: [this.project?.image?.key || ''],
         url: [this.project?.image?.url || ''],
-        type: [this.project?.image?.type || ''],
       }),
       members: this.fb.array([]),
       evidences: this.fb.array(evidences)
