@@ -17,11 +17,17 @@
   <div class="form-field">
     <label for="name">Nombre del Proyecto</label>
     <input id="name" formControlName="name" />
+    <small *ngIf="projectForm.get('name')?.invalid && projectForm.get('name')?.touched" class="error">
+      Este campo es obligatorio.
+    </small>
   </div>
 
   <div class="form-field">
     <label for="description">Descripción</label>
     <textarea id="description" formControlName="description"></textarea>
+    <small *ngIf="projectForm.get('description')?.invalid && projectForm.get('description')?.touched" class="error">
+      Este campo es obligatorio.
+    </small>
   </div>
 
   <div class="form-field">
@@ -40,6 +46,9 @@
         {{ group.name }}
       </option>
     </select>
+    <small *ngIf="projectForm.get('researchGroups')?.invalid && projectForm.get('researchGroups')?.touched" class="error">
+      Selecciona al menos un grupo.
+    </small>
   </div>
 
   <div class="form-field">
@@ -50,6 +59,9 @@
       <option value="INNOVATION">Innovación</option>
       <option value="ACADEMIC">Académico</option>
     </select>
+    <small *ngIf="projectForm.get('type')?.invalid && projectForm.get('type')?.touched" class="error">
+      Selecciona una opcion.
+    </small>
   </div>
 
   <div>
@@ -58,7 +70,15 @@
     <div formArrayName="members">
       <div *ngFor="let member of members.controls; let i = index" [formGroupName]="i" class="form-field">
         <input placeholder="Nombre" formControlName="name" />
+        <small *ngIf="member.get('name')?.invalid && member.get('name')?.touched" class="error">
+          El nombre es obligatorio.
+        </small>
+
         <input placeholder="Correo" formControlName="email" />
+        <small *ngIf="member.get('email')?.invalid && member.get('email')?.touched" class="error">
+          Correo válido obligatorio.
+        </small>
+
         <button type="button" (click)="removeMember(i)">Eliminar Miembro</button>
       </div>
     </div>
@@ -72,6 +92,9 @@
         <div class="evidance-input-div">
           <label>Archivo</label>
           <input type="file" (change)="onFileChange($event, i)" />
+          <small *ngIf="evidence.get('content')?.invalid && evidence.get('content')?.touched" class="error">
+            El archivo es obligatorio.
+          </small>
         </div>
 
 
@@ -97,6 +120,9 @@
         <div class="evidance-input-div">
           <label>Descripción</label>
           <input formControlName="description" />
+          <small *ngIf="evidence.get('description')?.invalid && evidence.get('description')?.touched" class="error">
+            La descripción es obligatoria.
+          </small>
         </div>
 
         <button type="button" (click)="removeEvidence(i)">Eliminar Evidencia</button>

@@ -3,8 +3,11 @@
 
   <div class="form-field">
     <label for="image">Miniatura del Proyecto</label>
-    <input type="file" id="image" (change)="onImageChange($event)" accept="image/*"  />
-    <div *ngIf="projectForm.get('image.content')?.value"  class="column">
+    <input type="file" id="image" (change)="onImageChange($event)" accept="image/*" />
+    <small *ngIf="projectForm.get('image.content')?.invalid" class="error">
+      La imagen es obligatoria.
+    </small>
+    <div *ngIf="projectForm.get('image.content')?.value" class="column">
       <p>Vista previa:</p>
       <img [src]="projectForm.get('image.content')?.value" alt="Vista previa principal" style="max-width: 200px; max-height: 200px;" />
     </div>
@@ -13,16 +16,25 @@
   <div class="form-field">
     <label for="code">Código del Proyecto</label>
     <input id="code" formControlName="code" />
+    <small *ngIf="projectForm.get('code')?.invalid && projectForm.get('code')?.touched" class="error">
+      Este campo es obligatorio.
+    </small>
   </div>
 
   <div class="form-field">
     <label for="name">Nombre del Proyecto</label>
     <input id="name" formControlName="name" />
+    <small *ngIf="projectForm.get('name')?.invalid && projectForm.get('name')?.touched" class="error">
+      Este campo es obligatorio.
+    </small>
   </div>
 
   <div class="form-field">
     <label for="description">Descripción</label>
     <textarea id="description" formControlName="description"></textarea>
+    <small *ngIf="projectForm.get('description')?.invalid && projectForm.get('description')?.touched" class="error">
+      Este campo es obligatorio.
+    </small>
   </div>
 
   <div class="form-field">
@@ -41,6 +53,9 @@
         {{ group.name }}
       </option>
     </select>
+    <small *ngIf="projectForm.get('researchGroups')?.invalid && projectForm.get('researchGroups')?.touched" class="error">
+      Selecciona al menos un grupo.
+    </small>
   </div>
 
   <div class="form-field">
@@ -58,7 +73,15 @@
     <div formArrayName="members">
       <div *ngFor="let member of members.controls; let i = index" [formGroupName]="i">
         <input placeholder="Nombre" formControlName="name" />
+        <small *ngIf="member.get('name')?.invalid && member.get('name')?.touched" class="error">
+          El nombre es obligatorio.
+        </small>
+
         <input placeholder="Correo" formControlName="email" />
+        <small *ngIf="member.get('email')?.invalid && member.get('email')?.touched" class="error">
+          Correo válido obligatorio.
+        </small>
+
         <button type="button" (click)="removeMember(i)">Eliminar Miembro</button>
       </div>
     </div>
@@ -72,16 +95,23 @@
         <div class="evidance-input-div">
           <label>Archivo</label>
           <input type="file" (change)="onFileChange($event, i)" accept=".pdf,.doc,.docx,image/*,video/*,application/msword,application/vdn.*,application/vdn.zip"/>
+          <small *ngIf="evidence.get('content')?.invalid && evidence.get('content')?.touched" class="error">
+            El archivo es obligatorio.
+          </small>
         </div>
 
         <div *ngIf="evidence.get('content')?.value" class="column">
           <p>Vista previa:</p>
-          <img [src]="evidence.get('content')?.value" alt="Vista previa" style="max-width: 200px; max-height: 200px;" />
+          <img *ngIf="evidence.get('type')?.value?.startsWith('image/')" [src]="evidence.get('content')?.value" alt="Vista previa" style="max-width: 200px; max-height: 200px;" />
+          <p *ngIf="!evidence.get('type')?.value?.startsWith('image/')">Archivo cargado: {{ evidence.get('type')?.value }}</p>
         </div>
 
         <div class="evidance-input-div">
           <label>Descripción</label>
           <input id="description" formControlName="description" />
+          <small *ngIf="evidence.get('description')?.invalid && evidence.get('description')?.touched" class="error">
+            La descripción es obligatoria.
+          </small>
         </div>
 
         <button type="button" (click)="removeEvidence(i)">Eliminar Evidencia</button>
@@ -90,7 +120,7 @@
   </div>
 
   <ng-container [ngSwitch]="state">
-    <p *ngSwitchCase="'LOADING'" class="loading">Esperando respuesta.</p>
+    <p *ngSwitchCase="'LOADING'" class="loading">Esperando respuesta...</p>
     <p *ngSwitchCase="'ERROR'" class="error">Error: {{ errorMsg }}</p>
     <p *ngSwitchCase="'SUCCESS'" class="success">Proyecto creado con éxito.</p>
   </ng-container>
