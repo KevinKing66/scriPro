@@ -38,6 +38,7 @@ export class ReportService {
                 {},
               ],
               ['Título:', ev.key],
+              ['Tipo de archivo:', ev.type],
               ['Descripción:', ev.description],
               ['Fecha:', ev.creationDateTime],
               ['participantes:', this.getMembesString(ev.participants)],
