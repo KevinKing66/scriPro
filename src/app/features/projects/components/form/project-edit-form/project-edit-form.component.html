@@ -95,7 +95,7 @@
         }@else if(evidence.get('url')?.value){
           <div class="column">
             <p>Vista previa:</p>
-            <img [src]="evidence.get('url')?.value" alt="Vista previa" style="max-width: 200px; max-height: 200px;" />
+            <img [src]="evidence.get('url')?.value" alt="Vista previa" style="max-width: 200px; max-height: 200px;"accept=".pdf,.doc,.docx,image/*,video/*,application/msword,application/vdn.*,application/vdn.zip" />
           </div>
         }
 

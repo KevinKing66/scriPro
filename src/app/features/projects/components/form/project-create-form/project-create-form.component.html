@@ -75,7 +75,7 @@
         </div>
         <div class="evidance-input-div">
           <label>Archivo</label>
-          <input type="file" (change)="onFileChange($event, i)" />
+          <input type="file" (change)="onFileChange($event, i)" accept=".pdf,.doc,.docx,image/*,video/*,application/msword,application/vdn.*,application/vdn.zip"/>
         </div>
 
         <div *ngIf="evidence.get('content')?.value" class="column">
