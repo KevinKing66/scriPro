@@ -20,6 +20,7 @@
     "@angular/router": "^19.2.7",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "ngx-cookie-service": "^19.1.2",
+    "pdfmake": "^0.2.20",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -29,6 +30,7 @@
     "@angular/cli": "^19.2.8",
     "@angular/compiler-cli": "^19.2.7",
     "@types/jasmine": "~5.1.0",
+    "@types/pdfmake": "^0.2.11",
     "dotenv": "^16.5.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
