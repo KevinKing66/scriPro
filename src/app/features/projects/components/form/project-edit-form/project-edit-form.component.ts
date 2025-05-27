@@ -55,6 +55,8 @@ export class ProjectEditFormComponent implements OnInit, OnChanges {
       image: this.fb.group({
         content: [this.project?.image?.content || ''],
         key: [this.project?.image?.key || ''],
+        url: [this.project?.image?.url || ''],
+        type: [this.project?.image?.type || ''],
       }),
       members: this.fb.array([]),
       evidences: this.fb.array(evidences)
@@ -104,7 +106,7 @@ export class ProjectEditFormComponent implements OnInit, OnChanges {
     if (!file) return;
 
     this.convertToBase64(file).then(base64 => {
-      this.projectForm.get('image')?.patchValue({ content: base64 });
+      this.projectForm.get('image')?.patchValue({ content: base64, key: '', type: this.getMimeTypeFromBase64(base64) });
     });
   }
 
