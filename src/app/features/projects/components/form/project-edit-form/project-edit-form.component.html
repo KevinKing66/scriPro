@@ -2,7 +2,7 @@
 
   <div class="form-field">
     <label for="image">Miniatura del Proyecto</label>
-    <input type="file" id="image" (change)="onImageChange($event)" />
+    <input type="file" id="image" (change)="onImageChange($event)" accept="image/*" />
     <div *ngIf="projectForm.get('image.content')?.value" class="column">
       <p>Vista previa:</p>
       <img [src]="projectForm.get('image.content')?.value" alt="Vista previa principal" style="max-width: 200px; max-height: 200px;" />
