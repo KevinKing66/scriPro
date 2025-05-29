@@ -11,6 +11,7 @@ import { Project } from '../model/project.model';
 import { PaginatedResponse } from '../../../core/models/pagineted-response.model';
 import { LoadingComponent } from '../../../shared/components/loading/loading.component';
 import { FilterService } from '../../../core/service/filter.service';
+import { ReportService } from '../service/report.service';
 
 @Component({
   standalone: true,
@@ -24,7 +25,13 @@ import { FilterService } from '../../../core/service/filter.service';
         <h1>No se encontraron proyectos</h1>
       </div>
     } @else {
-      <div class="d-flex">
+      <div class="d-flex content">
+
+        <div>
+          <button (click)="exportToPdf()" class="btn-fat btn btn-primary">
+            Exportar reporte de proyectos
+          </button>
+        </div>
         <app-project-list [projects]="projects"></app-project-list>
         <app-pagination
         [maxPages]="totalPages"
@@ -37,6 +44,7 @@ import { FilterService } from '../../../core/service/filter.service';
 })
 export class ProjectListPage implements OnInit{
   private service: ProjectService = inject(ProjectService);
+  private readonly reportService: ReportService = inject(ReportService);
   private filterService: FilterService = inject(FilterService);
   filter: string = "";
   totalPages: number = 0;
@@ -68,4 +76,10 @@ export class ProjectListPage implements OnInit{
     this.page = newPage;
     this.fetchData();
   }
+
+  exportToPdf() {
+    if (this.projects == null) return;
+    this.reportService.generateProjectsReportPdf(this.projects);
+  }
+
 }

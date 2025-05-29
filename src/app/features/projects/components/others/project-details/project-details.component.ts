@@ -25,7 +25,7 @@ export class ProjectDetailsComponent {
   }
 
   exportToPdf() {
-    this.reportService.generateProjectPdf(this.project);
+    this.reportService.generateProjectReportPdf(this.project);
   }
 
 }
