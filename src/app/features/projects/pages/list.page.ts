@@ -37,6 +37,14 @@ import { FormsModule } from '@angular/forms';
           </select>
         </div>
 
+        <div class="d-flex column m-1 color-black">
+          <label for="orderBy">Ordenar:</label>
+          <select id="orderBy" [(ngModel)]="selectedOrdeby" (ngModelChange)="onOrderByChange($event)" name="orderBy">
+            <option value="asc">Asc</option>
+            <option value="desc">Desc</option>
+          </select>
+        </div>
+
         <div>
           <button (click)="exportToPdf()" class="btn-fat btn btn-primary">
             Exportar reporte de proyectos
@@ -73,8 +81,13 @@ export class ProjectListPage implements OnInit{
     });
   }
 
-  onOrderFieldChange(value: 'createdAt' | 'updatedAt') {
+  onOrderFieldChange(value: 'createdAt' | 'updatedAt' | 'name') {
     this.selectedOrderField = value;
+    this.fetchData();
+  }
+
+  onOrderByChange(value: 'asc' | 'desc') {
+    this.selectedOrdeby = value;
     this.fetchData();
   }
 
