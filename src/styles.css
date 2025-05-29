@@ -275,3 +275,54 @@ h6{
   gap: 3rem;
   justify-content: unset;
 }
+
+.m-1{
+  display: flex;
+  margin: 1rem;
+  justify-content: unset;
+}
+.m-2{
+  display: flex;
+  margin: 2rem;
+  justify-content: unset;
+}
+.m-3{
+  display: flex;
+  margin: 3rem;
+  justify-content: unset;
+}
+.mb-1{
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: unset;
+}
+.mb-2{
+  display: flex;
+  margin-bottom: 2rem;
+  justify-content: unset;
+}
+.mb-3{
+  display: flex;
+  margin-bottom: 3rem;
+  justify-content: unset;
+}
+.mt-1{
+  display: flex;
+  margin-top: 1rem;
+  justify-content: unset;
+}
+.mt-2{
+  display: flex;
+  margin-top: 2rem;
+  justify-content: unset;
+}
+.mt-3{
+  display: flex;
+  margin-top: 3rem;
+  justify-content: unset;
+}
+
+.color-black{
+  color:#121212
+}
+
