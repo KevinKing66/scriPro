@@ -33,6 +33,7 @@ import { FormsModule } from '@angular/forms';
           <select id="dateType" [(ngModel)]="selectedOrderField" (ngModelChange)="onOrderFieldChange($event)" name="dateType">
             <option value="createdAt">Fecha de creación</option>
             <option value="updatedAt">Fecha de actualización</option>
+            <option value="updatedAt">Nombre de proyecto</option>
           </select>
         </div>
 
@@ -57,7 +58,7 @@ export class ProjectListPage implements OnInit{
   private filterService: FilterService = inject(FilterService);
 
   filter: string = "";
-  selectedOrderField: 'createdAt' | 'updatedAt' = 'updatedAt';
+  selectedOrderField: 'createdAt' | 'updatedAt' | 'name' = 'updatedAt';
   selectedOrdeby: 'asc' | 'desc' = 'desc';
   totalPages: number = 0;
 
@@ -78,7 +79,7 @@ export class ProjectListPage implements OnInit{
   }
 
   fetchData() {
-    this.service.findAll(this.filter, this.page, this.elementsPerPage, this.selectedOrdeby, this.selectedOrderField)
+    this.service.findAll(this.filter, this.page, this.elementsPerPage, this.selectedOrderField, this.selectedOrdeby)
     .subscribe({
       next: (data: PaginatedResponse<Project>) => {
         this.projects = data.data;
