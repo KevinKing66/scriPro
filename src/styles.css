@@ -221,6 +221,10 @@ tbody tr:hover {
   cursor: pointer;
 }
 
+.btn-fat{
+  padding: 1rem !important;
+}
+
 button:enabled{
     padding: 0.6rem;
     border: none;
@@ -229,7 +233,7 @@ button:enabled{
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
-  }
+}
 
 .search-bar{
     padding: 5px;
@@ -254,4 +258,20 @@ h6{
 
 .success{
   color: green;
+}
+
+.gap-1{
+  display: flex;
+  gap: 1rem;
+  justify-content: unset;
+}
+.gap-2{
+  display: flex;
+  gap: 2rem;
+  justify-content: unset;
+}
+.gap-3{
+  display: flex;
+  gap: 3rem;
+  justify-content: unset;
 }
