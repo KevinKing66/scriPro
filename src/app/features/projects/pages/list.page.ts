@@ -12,11 +12,12 @@ import { PaginatedResponse } from '../../../core/models/pagineted-response.model
 import { LoadingComponent } from '../../../shared/components/loading/loading.component';
 import { FilterService } from '../../../core/service/filter.service';
 import { ReportService } from '../service/report.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,
   selector: 'app-project-list-page',
-  imports: [CommonModule, ProjectListComponent, PaginationComponent, FloatingButtonComponent, LoadingComponent],
+  imports: [CommonModule, ProjectListComponent, PaginationComponent, FloatingButtonComponent, LoadingComponent, FormsModule,],
   template: `
     @if(projects == null) {
       <app-loading></app-loading>
@@ -26,6 +27,14 @@ import { ReportService } from '../service/report.service';
       </div>
     } @else {
       <div class="d-flex content">
+
+        <div class="d-flex column m-1 color-black">
+          <label for="dateType">Filtrar por:</label>
+          <select id="dateType" [(ngModel)]="selectedOrderField" (ngModelChange)="onOrderFieldChange($event)" name="dateType">
+            <option value="createdAt">Fecha de creación</option>
+            <option value="updatedAt">Fecha de actualización</option>
+          </select>
+        </div>
 
         <div>
           <button (click)="exportToPdf()" class="btn-fat btn btn-primary">
@@ -46,8 +55,12 @@ export class ProjectListPage implements OnInit{
   private service: ProjectService = inject(ProjectService);
   private readonly reportService: ReportService = inject(ReportService);
   private filterService: FilterService = inject(FilterService);
+
   filter: string = "";
+  selectedOrderField: 'createdAt' | 'updatedAt' = 'updatedAt';
+  selectedOrdeby: 'asc' | 'desc' = 'desc';
   totalPages: number = 0;
+
   page: number = 1;
   elementsPerPage: number = 5;
   projects: Project[] | null = null;
@@ -59,8 +72,13 @@ export class ProjectListPage implements OnInit{
     });
   }
 
+  onOrderFieldChange(value: 'createdAt' | 'updatedAt') {
+    this.selectedOrderField = value;
+    this.fetchData();
+  }
+
   fetchData() {
-    this.service.findAll(this.filter, this.page, this.elementsPerPage)
+    this.service.findAll(this.filter, this.page, this.elementsPerPage, this.selectedOrdeby, this.selectedOrderField)
     .subscribe({
       next: (data: PaginatedResponse<Project>) => {
         this.projects = data.data;
