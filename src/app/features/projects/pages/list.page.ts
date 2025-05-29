@@ -28,21 +28,23 @@ import { FormsModule } from '@angular/forms';
     } @else {
       <div class="d-flex content">
 
-        <div class="d-flex column m-1 color-black">
-          <label for="dateType">Filtrar por:</label>
-          <select id="dateType" [(ngModel)]="selectedOrderField" (ngModelChange)="onOrderFieldChange($event)" name="dateType">
-            <option value="createdAt">Fecha de creación</option>
-            <option value="updatedAt">Fecha de actualización</option>
-            <option value="updatedAt">Nombre de proyecto</option>
-          </select>
-        </div>
+        <div class="row wrap">
+          <div class="d-flex row m-1 color-black">
+            <label for="dateType">Filtrar por:</label>
+            <select id="dateType" [(ngModel)]="selectedOrderField" (ngModelChange)="onOrderFieldChange($event)" name="dateType">
+              <option value="createdAt">Fecha de creación</option>
+              <option value="updatedAt">Fecha de actualización</option>
+              <option value="updatedAt">Nombre de proyecto</option>
+            </select>
+          </div>
 
-        <div class="d-flex column m-1 color-black">
-          <label for="orderBy">Ordenar:</label>
-          <select id="orderBy" [(ngModel)]="selectedOrdeby" (ngModelChange)="onOrderByChange($event)" name="orderBy">
-            <option value="asc">Asc</option>
-            <option value="desc">Desc</option>
-          </select>
+          <div class="d-flex row m-1 color-black">
+            <label for="orderBy">Ordenar:</label>
+            <select id="orderBy" [(ngModel)]="selectedOrdeby" (ngModelChange)="onOrderByChange($event)" name="orderBy">
+              <option value="asc">Asc</option>
+              <option value="desc">Desc</option>
+            </select>
+          </div>
         </div>
 
         <div>

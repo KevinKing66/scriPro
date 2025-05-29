@@ -326,3 +326,6 @@ h6{
   color:#121212
 }
 
+.wrap{
+  flex-wrap: wrap;
+}
