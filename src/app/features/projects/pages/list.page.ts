@@ -30,6 +30,14 @@ import { FormsModule } from '@angular/forms';
 
         <div class="row wrap">
           <div class="d-flex row m-1 color-black">
+            <label for="elementsPerPage">Elementos por pag:</label>
+            <select id="elementsPerPage" [(ngModel)]="elementsPerPage" (ngModelChange)="onElementPerPageByChange($event)" name="elementsPerPage">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+            </select>
+          </div>
+          <div class="d-flex row m-1 color-black">
             <label for="dateType">Filtrar por:</label>
             <select id="dateType" [(ngModel)]="selectedOrderField" (ngModelChange)="onOrderFieldChange($event)" name="dateType">
               <option value="createdAt">Fecha de creación</option>
@@ -90,6 +98,11 @@ export class ProjectListPage implements OnInit{
 
   onOrderByChange(value: 'asc' | 'desc') {
     this.selectedOrdeby = value;
+    this.fetchData();
+  }
+
+  onElementPerPageByChange(value: number) {
+    this.elementsPerPage = value;
     this.fetchData();
   }
 
