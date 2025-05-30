@@ -111,9 +111,16 @@ export class ProjectListPage implements OnInit{
     this.fetchData();
   }
 
-  exportToPdf() {
-    if (this.projects == null) return;
-    this.reportService.generateProjectsReportPdf(this.projects);
+  async exportToPdf() {
+    this.service.findAllWithOuthPagination(this.filter, this.selectedOrderField, this.selectedOrdeby)
+      .subscribe({
+        next: (data: Project[]) => {
+          this.reportService.generateProjectsReportPdf(data);
+        },
+        error: (err: any) => {
+          console.error(err);
+        }
+      });
   }
 
 }

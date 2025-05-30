@@ -27,7 +27,7 @@ export class ProjectService {
     return this.http.get<Project>(`${this.apiUrl}/${_id}`);
   }
 
-  findAll(filter: string = "", page: number = 0, maxElements: number = 5, sortBy?: string, order?: string, startDate?: string, endDate?:string): Observable<PaginatedResponse<Project>> {
+  findAll(filter: string = "", page: number = 0, maxElements: number = 5, sortBy?: string, order?: string, startDate?: string, endDate?: string): Observable<PaginatedResponse<Project>> {
     filter = encodeURI(filter);
     let url = `${this.apiUrl}?page=${page}&limit=${maxElements}&keyword=${filter}`;
     if (sortBy) {
@@ -43,5 +43,23 @@ export class ProjectService {
       url += `&endDate=${endDate}`;
     }
     return this.http.get<PaginatedResponse<Project>>(url);
+  }
+
+  findAllWithOuthPagination(filter: string = "", sortBy?: string, order?: string, startDate?: string, endDate?: string): Observable<Project[]> {
+    filter = encodeURI(filter);
+    let url = `${this.apiUrl}/non-paginated?keyword=${filter}`;
+    if (sortBy) {
+      url += `&sortBy=${sortBy}`;
+    }
+    if (order) {
+      url += `&order=${order}`;
+    }
+    if (startDate) {
+      url += `&startDate=${startDate}`;
+    }
+    if (endDate) {
+      url += `&endDate=${endDate}`;
+    }
+    return this.http.get<Project[]>(url);
   }
 }
