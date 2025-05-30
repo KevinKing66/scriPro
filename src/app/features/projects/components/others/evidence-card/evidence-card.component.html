@@ -5,12 +5,16 @@
     }
 
     @if(isPdf()){
-      <img src="img/pdf.png" alt="PDF icon" />
+      <a [href]="evidence.url">
+        <img src="img/pdf.png" alt="PDF icon" />
+      </a>
     }
 
 
     @if(isDocument()){
-      <img src="/img/doc.png" alt="Document icon" />
+      <a [href]="evidence.url">
+        <img src="/img/doc.png" alt="Document icon" />
+      </a>
     }
 
   </div>
