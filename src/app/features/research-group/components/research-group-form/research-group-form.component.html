@@ -1,35 +1,35 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4 p-4">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-      <label class="block text-sm font-medium">Código *</label>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+
+    <div class="form-field column m-1">
+      <label>Código *</label>
       <input formControlName="code" class="input" type="text" />
-      <div class="text-red-500 text-sm" *ngIf="hasError('code')">
+      <div class="error text-sm" *ngIf="hasError('code')">
         El código es obligatorio.
       </div>
     </div>
 
-    <div>
-      <label class="block text-sm font-medium">Nombre *</label>
-      <input formControlName="name" class="input" type="text" />
-      <div class="text-red-500 text-sm" *ngIf="hasError('name')">
+    <div class="form-field column m-1">
+      <label>Nombre *</label>
+      <input formControlName="name" type="text" />
+      <div class="error text-sm" *ngIf="hasError('name')">
         El nombre es obligatorio.
       </div>
     </div>
 
-    <div class="md:col-span-2">
-      <label class="block text-sm font-medium">Descripción *</label>
-      <textarea formControlName="description" class="input"></textarea>
-      <div class="text-red-500 text-sm" *ngIf="hasError('description')">
+    <div class="form-field column m-1">
+      <label>Descripción *</label>
+      <textarea formControlName="description"></textarea>
+      <div class="error text-sm" *ngIf="hasError('description')">
         La descripción es obligatoria.
       </div>
     </div>
 
-    <!-- <div>
+    <!-- <div class="form-field column m-1">
       <label class="block text-sm font-medium">Facultad</label>
       <input formControlName="faculty" class="input" type="text" />
     </div> -->
 
-    <!-- <div>
+    <!-- <div class="form-field column m-1">
       <label class="block text-sm font-medium">Email de contacto</label>
       <input formControlName="contactEmail" class="input" type="email" />
       <div class="text-red-500 text-sm" *ngIf="hasError('contactEmail')">
@@ -37,7 +37,6 @@
       </div>
     </div> -->
 
-  </div>
 
   <button type="submit" class="btn btn-primary mt-4">Guardar</button>
 </form>
