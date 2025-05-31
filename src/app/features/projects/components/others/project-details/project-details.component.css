@@ -103,3 +103,9 @@ h1, h2, p{
 svg{
   color: white
 }
+
+@media (orientation: portrait) {
+  .evidence {
+      flex-direction: column;
+  }
+}
